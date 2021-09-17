@@ -9,6 +9,9 @@ This repository contains all the documentation and code for the 7thLevelPutPut a
 ## Version-control procedures
 ***
 Project will be managed using Github
+Commits will be well labeled and informative as to what happened during that commit in case of bugs or version reverting.
+Code reviews will be held on commits to the main branch in attempt to lower the chance of bugs.
+Functionality of web app must be built and tested before commiting to the main branch.
 
 ## Tool stack description and setup procedure
 ***
