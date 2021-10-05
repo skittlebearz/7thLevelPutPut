@@ -17,8 +17,6 @@ This repository contains all the documentation and code for the 7thLevelPutPut a
 
 Our tentative toolstack consists of:
 
-### Python/Django and MySQL
-
 Django - Web server framework using python  
 https://www.djangoproject.com/
 
@@ -35,16 +33,20 @@ https://fontawesome.com/
 Ensure python3 and pip3 are installed:
 
 Clone GitHub repo:
+
     git clone https://github.com/skittlebearz/7thLevelPutPut.git
 
 Setup up virtualenv
+
     virtualenv -p python3 <name>
     . <name>/bin/activate
 
 Install dependencies:
+
     pip3 install -r requirements.txt
 
 Run server:
+
     cd PutPutProject
     python3 manage.py runserver
 
