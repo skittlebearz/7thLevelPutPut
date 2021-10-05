@@ -16,31 +16,34 @@ This repository contains all the documentation and code for the 7thLevelPutPut a
 ## Tool stack description and setup procedure
 ***
 Our tentative toolstack consists of:
-### Django and MySQL
+### Python/Django and MySQL
 Django - Web server framework using python
-Installation:
-	https://www.djangoproject.com/download/
+	 https://www.djangoproject.com/
 
 MySQL - Popular relational database
-Installation:
-	After installing Django, install the mqsql driver:
+	https://www.mysql.com/
 
-	pip install mysqlclient
-	
-	Then create a database in MySQL client:
-	
-	mysql> CREATE DATABASE sample;
+Bootstrap - Mobile-first frontend framework
+	    https://getbootstrap.com/
 
-	Finally modify Django settings in settings.py:
-	
-	see https://docs.djangoproject.com/en/3.2/ref/databases/#mysql-notes
-Bootstrap and Font Awesome frontend
-Google for user authentication
+Font Awesome - Popular font and icon toolkit
+	       https://fontawesome.com/
 
 ## Build instructions
 ***
-TBD
-   
+Ensure python3 and pip3 are installed:
+
+Clone GitHub repo:
+	git clone https://github.com/skittlebearz/7thLevelPutPut.git
+
+Setup up virtualenv
+	virtualenv -p python3 <name>
+	. <name>/bin/activate
+
+Install dependencies:
+	pip3 install -r requirements.txt
+
+
 ## Unit testing
 ***
 TBD unittesting?
