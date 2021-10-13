@@ -37,16 +37,16 @@ if [ "$#" -ne "1" ]; then
   exit 2
 fi
 
-yes y | sudo apt install python3 pwgen python3-dev default-libmysqlclient-dev build-essential
 
 #}}}
 #{{{ Variables
 db_root_password="${1}"
-db_django_password=`pwgen 14 1`
+db_django_password=`openssl rand -base64 14`
 #}}}
 
 # Script proper
 
+yes y | sudo apt install python3 python3-dev default-libmysqlclient-dev build-essential
 wget -c https://repo.mysql.com//mysql-apt-config_0.8.19-1_all.deb
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.19-1_all.deb
 yes y | sudo DEBIAN_FRONTEND=noninteractive apt install mysql-server
