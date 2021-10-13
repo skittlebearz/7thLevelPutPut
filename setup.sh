@@ -50,7 +50,7 @@ yes y | sudo apt install python3 python3-dev default-libmysqlclient-dev build-es
 wget -c https://repo.mysql.com//mysql-apt-config_0.8.19-1_all.deb
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.19-1_all.deb
 yes y | sudo DEBIAN_FRONTEND=noninteractive apt install mysql-server
-
+rm mysql-apt-config_0.8.19-1_all.deb
 
 sudo su - root -c "mysql" <<_EOF_
   SET PASSWORD FOR 'root'@'localhost' = '${db_root_password}';
