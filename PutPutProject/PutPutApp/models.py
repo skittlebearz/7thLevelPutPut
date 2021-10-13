@@ -19,6 +19,10 @@ class Drink(models.Model):
     cost = models.DecimalField(decimal_places=2, max_digits=6)
     description = models.CharField(max_length=240)
 
+class Calandar(models.Model):
+    sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    day = models.DateField()
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
