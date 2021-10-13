@@ -75,6 +75,7 @@ default-character-set = utf8
 EOF
 
 #Setup python environment
+pip3 install wheel
 python3 -m venv putputvenv
 . putputvenv/bin/activate
 pip3 install -r requirements.txt
