@@ -46,12 +46,14 @@ db_django_password=`openssl rand -base64 14`
 
 # Script proper
 
-yes y | sudo apt install python3 python3-dev default-libmysqlclient-dev build-essential
+# Download and install dependencies
+yes y | sudo apt install python3 python3-dev python3.8-venv default-libmysqlclient-dev build-essential
 wget -c https://repo.mysql.com//mysql-apt-config_0.8.19-1_all.deb
 sudo DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.19-1_all.deb
 yes y | sudo DEBIAN_FRONTEND=noninteractive apt install mysql-server
 rm mysql-apt-config_0.8.19-1_all.deb
 
+#Setup MySQL server
 sudo su - root -c "mysql" <<_EOF_
   SET PASSWORD FOR 'root'@'localhost' = '${db_root_password}';
   DELETE FROM mysql.user WHERE User='';
@@ -61,7 +63,7 @@ sudo su - root -c "mysql" <<_EOF_
   FLUSH PRIVILEGES;
   CREATE DATABASE putput CHARACTER SET utf8;
   CREATE USER 'django'@'localhost' IDENTIFIED BY '${db_django_password}';
-  GRANT ALL PRIVILEGES ON mysite.* to django@localhost;
+  GRANT ALL PRIVILEGES ON putput.* to django@localhost;
 _EOF_
 
 cat << EOF > PutPutProject/mysql.cnf
@@ -71,4 +73,11 @@ user = django
 password = ${db_django_password}
 default-character-set = utf8
 EOF
+
+#Setup python environment
+python3 -m ensurepip --upgrade
+python3 -m venv putputenv
+. putputvenv/bin/activate
+pip3 install wheel
+pip3 install -r requirements.txt
 
