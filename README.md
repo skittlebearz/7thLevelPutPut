@@ -43,7 +43,7 @@ Clone GitHub repo and execute buildscript:
 
     git clone https://github.com/skittlebearz/7thLevelPutPut.git
     cd 7thLevelPutPut
-    bash setup.sh
+    bash setup.sh <MySQL root password>
     . putputvenv/bin/activate
     python3 PutPutProject/manage.py runserver
 
@@ -62,24 +62,23 @@ Install MySQL
     dpkg -i mysql-apt-config_0.8.19-1_all.deb
     apt install mysql-server
 
-Create django user and database:
 
-- Login to MySQL server as root
-- Create putput database
+Login to MySQL server as root
+Create putput database
 
     CREATE DATABASE putput CHARACTER SET utf8;
 
-- Create django user
+Create django user
 
     CREATE USER 'django'@'localhost' IDENTIFIED BY <password>;
     GRANT ALL PRIVILEGES ON putput.* to django@localhost;
 
-- Create mysql.cnf file in root folder with following settings:
+Create mysql.cnf file in root folder with following settings:
 
     [client]
     database = putput
     user = django 
-    password = ${db_django_password}
+    password = <password>
     default-character-set = utf8
 
 Setup up virtualenv
