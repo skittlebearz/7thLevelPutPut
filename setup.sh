@@ -79,4 +79,5 @@ pip3 install wheel
 python3 -m venv putputvenv
 . putputvenv/bin/activate
 pip3 install -r requirements.txt
+python3 PutPutProject/manage.py migrate
 
