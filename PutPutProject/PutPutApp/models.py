@@ -6,7 +6,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type= models.CharField(max_length=1)
-    account_balance = models.DecimalField(decimal_places=2, max_digits=12)
+    account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
 
 class Score(models.Model):
     user = models.ManyToManyField(User)
