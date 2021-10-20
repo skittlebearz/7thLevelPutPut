@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  Hi, {{ user.username|default:'Guest' }}
+  <div>
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">Logout</a>
+
+    <!-- consider having a login link if not logged in -->
+
+    {% endif %}
+  </div>
+{% endblock %}
