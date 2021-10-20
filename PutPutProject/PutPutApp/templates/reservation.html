@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+        <meta charset = "utf-8"/>
+        <title>Reservation</title>
+</head>
+
+<body>
+        <h1> Sponsor a Tournament </h1>
+
+        <form action="/reservation/" method="post">
+                {% csrf_token %}
+                      <label for="date">Enter Date for Tournament (YYYY/MM/DD): </label>
+                      <input id ="date" type="DateField" name="date" value="">
+
+                      <input value="reservation" input type="submit">
+        </form>
+        </body>
+</html>
+
+
+
+
