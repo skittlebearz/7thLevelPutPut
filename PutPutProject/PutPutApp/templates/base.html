@@ -8,6 +8,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <!-- Font Awesome free package -->
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+    <!-- Font Awesome Free package Web Font + CSS -->
+    <!-- <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> -->
+
     <title>Putt Putt Website</title>
   </head>
   <body>
@@ -16,7 +22,7 @@
 
     <!-- Top Navigation, TODO: separate file, user-based menu -->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="#">Medieval Minigolf</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -31,7 +37,9 @@
                 Player
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">$12.98</a> <a class="dropdown-item" href="#">37 points</a></li>
+                <li class="text-center font-weight-light">Player</li>
+                <li><a class="dropdown-item" href="#"><i class="fas fa-wallet text-left"></i> <span class="text-right">$12.98</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fas fa-trophy"></i> 37 points</a></li>
                 <li><a class="dropdown-item" href="#">Order A Drink</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Account</a></li>
@@ -43,6 +51,7 @@
                 Bartender
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="text-center font-weight-light">Bartender</li>
                 <li><a class="dropdown-item" href="#">Clock In <TotalTime></a></li>
                 <li><a class="dropdown-item" href="#">Queue <NumItems></a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -55,6 +64,7 @@
                 Sponsor
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="text-center font-weight-light">Sponsor</li>
                 <li><a class="dropdown-item" href="#">Manage Events</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Account</a></li>
@@ -66,6 +76,7 @@
                 Manager
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="text-center font-weight-light">Manager</li>
                 <li><a class="dropdown-item" href="#">Drink Menu</a></li>
                 <li><a class="dropdown-item" href="#">Manage Users</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -74,10 +85,6 @@
               </ul>
             </li>
           </ul>
-          <!-- <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> -->
         </div>
       </div>
     </nav>
@@ -99,16 +106,99 @@
     <h1>Putt Putt Website</h1>
   </div>
 
-  <!--row and col -->
+<div class="container">
 							<div class="row">
-								<div class="col-12 col-lg-6 text-center">
-<h2 class="text-centered">Calendar of Events</h2>
+								<div class="col-12 col-lg-6">
+                  <i class="fas fa-wallet"></i>
+<h2 class="text-center">Calendar of Events</h2>
+<div class="card w-100 text-left">
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<div class="bd-callout bd-callout-info">
+Note that content should not be larger than the height of the image. If content is larger than the image the content will be displayed outside the image.
+</div>
 								</div>
 								<div class="col-12 col-lg-6 text-center">
                   <h2>Leaderboard</h2>
-
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Selene</td>
+                        <td>Otto</td>
+                        <td>31</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>32</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Tina</td>
+                        <td>Jones</td>
+                        <td>37</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Paul</td>
+                        <td>Walker</td>
+                        <td>41</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Bruce</td>
+                        <td>Banner</td>
+                        <td>43</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>Lance</td>
+                        <td>Elliot</td>
+                        <td>46</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>Rylee</td>
+                        <td>Freud</td>
+                        <td>48</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>Dwayne</td>
+                        <td>Johnson</td>
+                        <td>50</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Paul</td>
+                        <td>Atreides</td>
+                        <td>54</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10</th>
+                        <td>Barbara</td>
+                        <td>Holland</td>
+                        <td>59</td>
+                      </tr>
+                    </tbody>
+                  </table>
 								</div>
 							</div>
+            </div>
     {% block content %}
     {% endblock %}
   </body>
