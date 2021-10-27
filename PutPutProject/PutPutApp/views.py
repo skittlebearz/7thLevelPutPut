@@ -7,6 +7,9 @@ from .models import Drink, Orders
 def dashboard(request):
     return render(request, "PutPutApp/dashboard.html")
 
+def Login(request):
+    return render(request, "registration/login.html")
+
 def register(request):
     if request.method == "GET":
         return render(
@@ -65,4 +68,3 @@ def manage_menu(request):
             new_drink.description = request.POST['description']
             new_drink.save()
         return render(request, 'drinks/manage_menu.html')
-

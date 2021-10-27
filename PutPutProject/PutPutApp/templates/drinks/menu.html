@@ -1,39 +1,37 @@
+{% extends 'base.html' %}
 
+{% block content %}
+<div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white" style="background-image: url('https://mdbootstrap.com/img/new/slides/003.jpg');">
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-	<head> 
-		<meta charset="utf-8"/> 
-		<title>Menu</title> </head> 
+	<h1 class="display-1 font-weight-bold">Menu</h1>
+	<p class="lead">Order a drink and have it brought to you on the course!</p>
+</div>
 
-		<body>
+<div class="container">
+	<div class="row">
+		<div class="col-12 px-3">
 
-			<h1> Menu </h1>
-			<h2> Order a drink and have it brought to you on the course! </h2>
 
 			<!--
-		<form action="/menu/" method="post">
-			{% csrf_token %}
-			{{ form }}
-			<input value="Order Drink" input type="submit">
-		</form>
-		-->
+					<form action="/menu/" method="post">
+						{% csrf_token %}
+						{{ form }}
+						<input value="Order Drink" input type="submit">
+					</form>
+					-->
 
 
-		{% for drink in drink_menu %} 	
+			{% for drink in drink_menu %}
 
-		<br>
-		<div style="background-color:lightblue">
-		<h3>{{ drink.name }}</h3> 	
-		<h4>{{ drink.cost }}</h4> 	
-		<h4> {{ drink.description}} </h4> 	
+			<br>
+			<div style="background-color:lightblue">
+				<h3>{{ drink.name }}</h3>
+				<h4>{{ drink.cost }}</h4>
+				<h4> {{ drink.description}} </h4>
+			</div>
+
+			{% endfor %}
 		</div>
-
-		{% endfor %}
-
-
-		</body>
-</html>
-
-
+	</div>
+</div>
+{% endblock %}

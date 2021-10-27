@@ -1,37 +1,37 @@
+{% extends 'base.html' %}
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-	<head> 
-		<meta charset="utf-8"/> 
-		<title>Manage Menu</title> 
-		</head> 
+{% block content %}
+<div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white" style="background-image: url('https://mdbootstrap.com/img/new/slides/003.jpg');">
 
-		<body>
-			<h1>Current Drinks</h1> 	
+	<h1 class="display-1 font-weight-bold">Current Drinks</h1>
+</div>
 
-		{% for drink in drink_menu %} 	
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-lg-6 px-3">
 
-		<br>
-		<div style="background-color:lightblue">
-		<h3>{{ drink.name }}</h3> 	
-		<h4>{{ drink.cost }}</h4> 	
-		<h4> {{ drink.description}} </h4> 	
+			{% for drink in drink_menu %}
+
+			<br>
+			<div style="background-color:lightblue">
+				<h3>{{ drink.name }}</h3>
+				<h4>{{ drink.cost }}</h4>
+				<h4> {{ drink.description}} </h4>
+			</div>
+
+			{% endfor %}
 		</div>
-
-		{% endfor %}
-
-
-		<h1> Add a new drink </h1>
-
-		<form action="/managemenu/" method="post">
-			{% csrf_token %}
-			{{ form }}
-			<input value="Add Drink" input type="submit">
-		</form>
+		<div class="col-12 col-lg-6 px-3">
 
 
-		</body>
-</html>
+			<h1> Add a new drink </h1>
 
-
+			<form action="/managemenu/" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input value="Add Drink" input type="submit">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

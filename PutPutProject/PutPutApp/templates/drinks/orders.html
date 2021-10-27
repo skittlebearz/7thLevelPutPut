@@ -1,28 +1,26 @@
+{% extends 'base.html' %}
 
+{% block content %}
+<div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white" style="background-image: url('https://mdbootstrap.com/img/new/slides/003.jpg');">
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-	<head> 
-		<meta charset="utf-8"/> 
-		<title>Orders</title> </head> 
+	<h1 class="display-1 font-weight-bold">Orders</h1>
+</div>
 
-		<body>
+<div class="container">
+	<div class="row">
+		<div class="col-12 px-3">
 
-			<h1> Orders </h1>
+			{% for order in orders %}
 
-		{% for order in orders %} 	
+			<br>
+			<div style="background-color:lightblue">
+				<h3>{{ order.name }}</h3>
+				<h4>{{ order.drink }}</h4>
+				<h4> {{ order.location}} </h4>
+			</div>
 
-		<br>
-		<div style="background-color:lightblue">
-		<h3>{{ order.name }}</h3> 	
-		<h4>{{ order.drink }}</h4> 	
-		<h4> {{ order.location}} </h4> 	
+			{% endfor %}
 		</div>
-
-		{% endfor %}
-
-		</body>
-</html>
-
-
+	</div>
+</div>
+{% endblock %}
