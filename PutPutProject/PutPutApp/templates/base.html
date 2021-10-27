@@ -1,3 +1,4 @@
+{}% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -10,7 +11,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <!-- Font Awesome free package -->
-  <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+  <!-- <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script> -->
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
 
   <!-- Font Awesome Free package Web Font + CSS -->
   <!-- <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"> -->
@@ -33,16 +35,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Drink Menu</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'menu' %}">Drink Menu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Register</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Course Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,7 +61,7 @@
               <li><a class="dropdown-item" href="#">
                 <div class="d-flex flex-row justify-content-between">
                   <div>
-                    <i class="fas fa-wallet text-left"></i>
+                    <!-- <i class="fas fa-wallet text-left"></i> -->
                     <p class="p-0 m-0">Wallet</p>
                   </div>
                   <div><span class="badge text-right rounded-pill bg-success">$12.95</span></div>
@@ -66,7 +71,7 @@
               <li><a class="dropdown-item" href="#">
                   <div class="d-flex flex-row justify-content-between">
                     <div>
-                      <i class="fas fa-trophy"></i>
+                      <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Scorecard</p>
                     </div>
                     <div><span class="badge text-right rounded-pill bg-warning">37</span></div>
@@ -74,7 +79,7 @@
                   </a>
                 </li>
               <!-- <li><a class="dropdown-item" href="#"> 37 points</a></li> -->
-              <li><a class="dropdown-item" href="#">Order A Drink</a></li>
+              <li><a class="dropdown-item" href="{% url 'menu' %}">Order A Drink</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -94,7 +99,7 @@
               <li><a class="dropdown-item" href="#">
                   <div class="d-flex flex-row justify-content-between">
                     <div>
-                      <i class="fas fa-clock"></i>
+                      <!-- <i class="fas fa-clock"></i> -->
                       <p class="p-0 m-0">Clock In</p>
                     </div>
                     <div><span class="badge text-right rounded-pill bg-success">01:29</span></div>
@@ -102,10 +107,10 @@
                   </a>
                 </li>
               <!-- <li><a class="dropdown-item" href="#">Clock In <TotalTime></a></li> -->
-              <li><a class="dropdown-item" href="#">
+              <li><a class="dropdown-item" href="{% url 'orders' %}">
                   <div class="d-flex flex-row justify-content-between">
                     <div>
-                      <i class="fas fa-trophy"></i>
+                      <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Queue</p>
                     </div>
                     <div><span class="badge text-right rounded-pill bg-warning">17</span></div>
@@ -146,8 +151,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Edit Drink Menu</a></li>
-              <li><a class="dropdown-item" href="#">Manage Users</a></li>
+              <li><a class="dropdown-item" href="{% url 'manage_menu' %}">Edit Drink Menu</a></li>
+              <li><a class="dropdown-item" href="{% url 'django.contrib.auth.urls' %}">Manage Users</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -156,9 +161,9 @@
             </ul>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
+          </li> -->
 
         </ul>
       </div>
