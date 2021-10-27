@@ -1,0 +1,28 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head> 
+		<meta charset="utf-8"/> 
+		<title>Orders</title> </head> 
+
+		<body>
+
+			<h1> Orders </h1>
+
+		{% for order in orders %} 	
+
+		<br>
+		<div style="background-color:lightblue">
+		<h3>{{ order.name }}</h3> 	
+		<h4>{{ order.drink }}</h4> 	
+		<h4> {{ order.location}} </h4> 	
+		</div>
+
+		{% endfor %}
+
+		</body>
+</html>
+
+

@@ -19,6 +19,14 @@ class Drink(models.Model):
     cost = models.DecimalField(decimal_places=2, max_digits=6)
     description = models.CharField(max_length=240)
 
+    def __str__(self):
+        return self.name
+
+class Orders(models.Model):
+    name = models.CharField(max_length=30)
+    drink = models.CharField(max_length=240)
+    location = models.PositiveIntegerField()
+
 class Calandar(models.Model):
     sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
     day = models.DateField()

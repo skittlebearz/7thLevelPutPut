@@ -1,0 +1,39 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head> 
+		<meta charset="utf-8"/> 
+		<title>Menu</title> </head> 
+
+		<body>
+
+			<h1> Menu </h1>
+			<h2> Order a drink and have it brought to you on the course! </h2>
+
+			<!--
+		<form action="/menu/" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input value="Order Drink" input type="submit">
+		</form>
+		-->
+
+
+		{% for drink in drink_menu %} 	
+
+		<br>
+		<div style="background-color:lightblue">
+		<h3>{{ drink.name }}</h3> 	
+		<h4>{{ drink.cost }}</h4> 	
+		<h4> {{ drink.description}} </h4> 	
+		</div>
+
+		{% endfor %}
+
+
+		</body>
+</html>
+
+
