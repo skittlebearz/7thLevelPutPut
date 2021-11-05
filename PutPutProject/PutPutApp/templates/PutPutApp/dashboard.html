@@ -1,29 +1,44 @@
 {% extends 'base.html' %}
 
+{% block title %}Home{% endblock %}
+
+{% block background %}
+<!-- {% static 'home.svg' %} -->
+{% endblock %}
+
 {% block content %}
-Hi, {{ user.username|default:'Guest' }}
+<!-- Hi, {{ user.username|default:'Guest' }}
 <div>
   {% if user.is_authenticated %}
   <a href="{% url 'logout' %}">Logout</a>
 
-  <!-- consider having a login link if not logged in -->
+  <!-- consider having a login link if not logged in
 
-  {% endif %}
-</div>
-
-<!-- <div class="topnav">
-<a class="active" href="#home">Home</a>
-<a href="#news">News</a>
-<a href="#contact">Contact</a>
-<a href="#about">About</a>
+{% endif %}
 </div> -->
 
-<!-- Background image -->
-<div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white" style="background-image: url('https://mdbootstrap.com/img/new/slides/003.jpg');">
-  <h1 class="display-1 font-weight-bold">Putt Putt Website</h1>
+<div class="container mt-5 pb-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="mask p-5" style="background-color: rgba(255, 255, 255, 0.5);">
+        <div class="row">
+          <div class="col-lg-3">
+            <!-- TODO: update image - Temporary Logo -->
+            <img class="w-100 my-3 mr-lg-3" src="https://upload.wikimedia.org/wikipedia/commons/3/36/Letter_M%2C_drop_capital_illustration.png" alt="">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="mb-3 display-1 fw-bold text-uppercase">Medieval <br />Minigolf</h1>
+          </div>
+        </div>
+        <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a class="btn btn-outline-primary border-2 btn-lg shadow" href="{% url 'login' %}" target="_blank" role="button">Register</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-12 col-lg-6 px-3">
       <div class="text-center">
@@ -163,5 +178,5 @@ Hi, {{ user.username|default:'Guest' }}
       </table>
     </div>
   </div>
-</div>
+</div> -->
 {% endblock %}
