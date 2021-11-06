@@ -3,41 +3,194 @@
 {% block title %}Menu | Tavern{% endblock %}
 
 {% block background %}
-{% static 'home.svg' %}
+<!-- {% static 'tavern.svg' %} -->
 {% endblock %}
 
 {% block content %}
-<div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white" style="background-image: url('https://mdbootstrap.com/img/new/slides/003.jpg');">
-
-	<h1 class="display-1 font-weight-bold">Menu</h1>
-	<p class="lead">Order a drink and have it brought to you on the course!</p>
-</div>
-
-<div class="container">
+<div class="container mt-5 pb-5">
 	<div class="row">
-		<div class="col-12 px-3">
+		<div class="col-lg-8">
+			<div class="mask p-5" style="background-color: rgba(255, 255, 255, 0.5);">
+				<h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Ye Olde <br />19<sup>th</sup> Hole</h1>
+				<hr />
+				<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+
+					<!--
+							<form action="/menu/" method="post">
+								{% csrf_token %}
+								{{ form }}
+								<input value="Order Drink" input type="submit">
+							</form>
+							-->
+
+					<!-- TODO: make menu dynamic -->
+					<!-- {% for drink in drink_menu %}
+
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								${{ drink.cost }}
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">{{ drink.name }}</h2>
+								<p class="card-text">{{ drink.description}}</p>
+							</div>
+						</div>
+					</div>
+
+					{% endfor %} -->
 
 
-			<!--
-					<form action="/menu/" method="post">
-						{% csrf_token %}
-						{{ form }}
-						<input value="Order Drink" input type="submit">
-					</form>
-					-->
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.25
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Dirty Dr. Pepper</h5>
+								<p class="card-text">Dr. Pepper with Coconut</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.25
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body w-100">
 
+								<h5 class="card-title">Just Peachy</h5>
+								<p class="card-text">Dr. Pepper + Vanilla + Peach + Half &amp; Half</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$2.20
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Malibu</h5>
+								<p class="card-text">Sprite + Raspberry + Mango</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.15
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Kona Breeze</h5>
+								<p class="card-text">Sprite + Coconut + Pineapple</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.25
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Dirty Dr. Pepper</h5>
+								<p class="card-text">Dr. Pepper with Coconut</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.25
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body w-100">
 
-			{% for drink in drink_menu %}
+								<h5 class="card-title">Just Peachy</h5>
+								<p class="card-text">Dr. Pepper + Vanilla + Peach + Half &amp; Half</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$2.20
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Malibu</h5>
+								<p class="card-text">Sprite + Raspberry + Mango</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.15
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Kona Breeze</h5>
+								<p class="card-text">Sprite + Coconut + Pineapple</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.25
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Dirty Dr. Pepper</h5>
+								<p class="card-text">Dr. Pepper with Coconut</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.25
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body w-100">
 
-			<br>
-			<div style="background-color:lightblue">
-				<h3>{{ drink.name }}</h3>
-				<h4>{{ drink.cost }}</h4>
-				<h4> {{ drink.description}} </h4>
+								<h5 class="card-title">Just Peachy</h5>
+								<p class="card-text">Dr. Pepper + Vanilla + Peach + Half &amp; Half</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$2.20
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Malibu</h5>
+								<p class="card-text">Sprite + Raspberry + Mango</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								$1.15
+								<span class="visually-hidden">cost</span>
+							</span>
+							<div class="card-body">
+								<h5 class="card-title">Kona Breeze</h5>
+								<p class="card-text">Sprite + Coconut + Pineapple</p>
+							</div>
+						</div>
+					</div>
+				</div </div>
 			</div>
-
-			{% endfor %}
 		</div>
 	</div>
-</div>
-{% endblock %}
+	{% endblock %}
