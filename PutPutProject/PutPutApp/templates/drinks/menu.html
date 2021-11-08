@@ -15,14 +15,6 @@
 				<hr />
 				<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
 
-					<!--
-							<form action="/menu/" method="post">
-								{% csrf_token %}
-								{{ form }}
-								<input value="Order Drink" input type="submit">
-							</form>
-							-->
-
 					<!-- TODO: make menu dynamic -->
 					<!-- {% for drink in drink_menu %}
 
@@ -189,8 +181,39 @@
 							</div>
 						</div>
 					</div>
-				</div </div>
+				</div>
+			</div>
+			<div class="col-lg-4 order-1 order-lg-2 text-center my-5 px-5">
+
+				{{ if user.is_authenticated }}
+					{{ if user.is_player }}
+
+					<!-- TODO: integrate order form -->
+						<!--
+								<form action="/menu/" method="post">
+									{% csrf_token %}
+									{{ form }}
+									<input value="Order Drink" input type="submit">
+								</form>
+								-->
+
+					<button class="btn px-5 btn-primary border-2 btn-lg mx-auto shadow w-100" href="#" target="_blank" role="button">Order</button>
+					{{ else if user.is_bartender }}
+					<!-- TODO: display queue, make interactive and dynamic -->
+
+					{{ else if user.is_manager }}
+					<!-- TODO: display menu edit controls -->
+
+					{{ else }}
+					<!-- TODO: prompt user to login -->
+
+					{{ endif }}
+				{{ endif }}
+
+
+				<div class="arrow-down mx-auto d-none d-lg-block"></div>
 			</div>
 		</div>
 	</div>
-	{% endblock %}
+</div>
+{% endblock %}
