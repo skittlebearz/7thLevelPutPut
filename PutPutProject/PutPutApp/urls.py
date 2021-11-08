@@ -10,4 +10,5 @@ urlpatterns = [
     path("menu/", menu, name="menu"),
     path("managemenu/", manage_menu, name="manage_menu"),
     path("orders/", orders, name="orders"),
+    path("leaderboard/", leaderboard, name="leaderboard"),
 ]

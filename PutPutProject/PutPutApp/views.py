@@ -68,3 +68,6 @@ def manage_menu(request):
             new_drink.description = request.POST['description']
             new_drink.save()
         return render(request, 'drinks/manage_menu.html')
+
+def leaderboard(request):
+    return render(request, "PutPutApp/leaderboard.html")
