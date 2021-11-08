@@ -25,6 +25,9 @@ class Profile(models.Model):
     def get_firstname(self):
         return self.firstname
 
+    def get_balance(self):
+        return self.account_balance
+
     @property
     def is_player(self):
         return self.player
