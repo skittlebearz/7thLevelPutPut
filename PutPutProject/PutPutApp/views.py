@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm
-from .models import Drink, Orders
+from .models import Drink, Orders, Score 
 
 
 def dashboard(request):
@@ -92,7 +92,9 @@ def manage_menu(request):
 
 def scorecard(request):
     if request.method == "GET":
-        return render(request, 'score/scorecard.html')
+        scores = Score.objects.filter(user__username__exact=request.user.username)
+        # TODO chain filter for current tournament
+        return render(request, 'score/scorecard.html', {'scores' : scores})
     if request.method == "POST":
         pass
 

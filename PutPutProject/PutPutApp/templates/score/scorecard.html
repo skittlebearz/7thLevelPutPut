@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% for score in scores %}
+<p> Hole: {{ score.hole }}, Strokes: {{ score.num_strokes }} </p>
+{% endfor %}
