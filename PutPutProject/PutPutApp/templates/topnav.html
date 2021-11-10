@@ -18,19 +18,19 @@
             <a class="nav-link active" aria-current="page" href="{% url 'register' %}">Register</a>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="{% url 'tavern' %}">Tavern</a> -->
+            <!-- <a class="nav-link active" aria-current="page" href="{#% url 'tavern' %#}">Tavern</a> -->
             <a class="nav-link active" aria-current="page" href="{% url 'menu' %}">Tavern</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="{% url 'course' %}">Course</a> -->
+            <!-- <a class="nav-link active" aria-current="page" href="{#% url 'course' %#}">Course</a> -->
             <a class="nav-link active" aria-current="page" href="https://static.vecteezy.com/system/resources/previews/000/186/919/original/isometric-golf-course-illustration-vector.jpg">Course</a>
           </li>
         </ul>
 
-        {% if user.is_authenticated %}
+	{% if user.is_authenticated %}
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown ms-auto">
             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,7 +38,7 @@
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% if {{user.is_player}} %}
+          {% if user.is_player %}
               <li class="text-center ">Player</li>
               <li>
                 <hr class="dropdown-divider">
@@ -60,7 +60,7 @@
                       <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Scorecard</p>
                     </div>
-                    <!-- <div><span class="badge text-right rounded-pill bg-success">${{ user.get_score (of current tourney) }}</span></div> -->
+                    <!-- <div><span class="badge text-right rounded-pill bg-success">$ {# user.get_score (of current tourney) #} </span></div> -->
                     <div><span class="badge text-right rounded-pill bg-warning">37</span></div>
                   </div>
                 </a>
@@ -71,7 +71,7 @@
                 <hr class="dropdown-divider">
               </li>
               {% endif %}
-              {% if {{user.is_bartender}} %}
+              {% if user.is_bartender %}
               <li class="text-center ">Bartender</li>
               <li>
                 <hr class="dropdown-divider">
@@ -101,7 +101,7 @@
                 <hr class="dropdown-divider">
               </li>
               {% endif %}
-              {% if {{user.is_sponsor}} %}
+              {% if user.is_sponsor %}
               <li class="text-center ">Sponsor</li>
               <li>
                 <hr class="dropdown-divider">
@@ -112,7 +112,7 @@
                 <hr class="dropdown-divider">
               </li>
               {% endif %}
-              {% if {{user.is_manager}} %}
+              {% if user.is_manager %}
               <li class="text-center ">Manager</li>
               <li>
                 <hr class="dropdown-divider">

@@ -78,10 +78,6 @@ def manage_menu(request):
             new_drink.cost = request.POST['cost']
             new_drink.description = request.POST['description']
             new_drink.save()
-        return render(request, 'drinks/manage_menu.html')
-
-def leaderboard(request):
-    return render(request, "PutPutApp/leaderboard.html")
         return HttpResponseRedirect(request.path_info)
 
     if request.method == "POST" and 'remove_drink' in request.POST:
@@ -93,4 +89,6 @@ def leaderboard(request):
  
         return HttpResponseRedirect(request.path_info)
 
+def leaderboard(request):
+    return render(request, "PutPutApp/leaderboard.html")
 

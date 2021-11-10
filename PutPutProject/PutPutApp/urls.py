@@ -1,6 +1,6 @@
 from django.conf.urls import include
 from django.urls import path
-from PutPutApp.views import dashboard, register, menu, manage_menu, orders, login, fulfill_order
+from PutPutApp.views import dashboard, register, menu, manage_menu, orders, login, fulfill_order, leaderboard
 
 urlpatterns = [
     path("register/", register, name="register"),

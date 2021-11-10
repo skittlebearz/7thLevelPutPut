@@ -18,7 +18,7 @@
 				<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
 
 					<!-- TODO: make menu dynamic -->
-					<!-- {% for drink in drink_menu %}
+					{% for drink in drink_menu %}
 
 					<div class="col">
 						<div class="card h-100">
@@ -33,7 +33,7 @@
 						</div>
 					</div>
 
-					{% endfor %} -->
+					{% endfor %}
 
 					<form action="/menu/" method="post">
 						{% csrf_token %}
@@ -41,159 +41,17 @@
 						<input value="Order Drink" input type="submit">
 					</form>
 
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.25
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Dirty Dr. Pepper</h5>
-								<p class="card-text">Dr. Pepper with Coconut</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.25
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body w-100">
-
-								<h5 class="card-title">Just Peachy</h5>
-								<p class="card-text">Dr. Pepper + Vanilla + Peach + Half &amp; Half</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$2.20
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Malibu</h5>
-								<p class="card-text">Sprite + Raspberry + Mango</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.15
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Kona Breeze</h5>
-								<p class="card-text">Sprite + Coconut + Pineapple</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.25
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Dirty Dr. Pepper</h5>
-								<p class="card-text">Dr. Pepper with Coconut</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.25
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body w-100">
-
-								<h5 class="card-title">Just Peachy</h5>
-								<p class="card-text">Dr. Pepper + Vanilla + Peach + Half &amp; Half</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$2.20
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Malibu</h5>
-								<p class="card-text">Sprite + Raspberry + Mango</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.15
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Kona Breeze</h5>
-								<p class="card-text">Sprite + Coconut + Pineapple</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.25
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Dirty Dr. Pepper</h5>
-								<p class="card-text">Dr. Pepper with Coconut</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.25
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body w-100">
-
-								<h5 class="card-title">Just Peachy</h5>
-								<p class="card-text">Dr. Pepper + Vanilla + Peach + Half &amp; Half</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$2.20
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Malibu</h5>
-								<p class="card-text">Sprite + Raspberry + Mango</p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100">
-							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
-								$1.15
-								<span class="visually-hidden">cost</span>
-							</span>
-							<div class="card-body">
-								<h5 class="card-title">Kona Breeze</h5>
-								<p class="card-text">Sprite + Coconut + Pineapple</p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
+
+
+
+
 			<div class="col-lg-4 order-1 order-lg-2 text-center my-5 px-5">
 
-				{{ if user.is_authenticated }}
-					{{ if user.is_player }}
+				{% if user.is_authenticated %}
+					{% if user.is_player %}
 
 					<!-- TODO: integrate order form -->
 						<!--
@@ -205,21 +63,20 @@
 								-->
 
 					<button class="btn px-5 btn-primary border-2 btn-lg mx-auto shadow w-100" href="#" target="_blank" role="button">Order</button>
-					{{ else if user.is_bartender }}
+					{#{ else if user.is_bartender }#}
 					<!-- TODO: display queue, make interactive and dynamic -->
 
-					{{ else if user.is_manager }}
+					{#{ else if user.is_manager }#}
 					<!-- TODO: display menu edit controls -->
 
-					{{ else }}
+					{#{ else }#}
 					<!-- TODO: prompt user to login -->
 
-					{{ endif }}
-				{{ endif }}
+					{% endif %}
+				{% endif %}
 
 
 				<div class="arrow-down mx-auto d-none d-lg-block"></div>
-			</div>
 		</div>
 	</div>
 </div>

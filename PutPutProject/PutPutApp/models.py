@@ -6,13 +6,13 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # user_type= models.CharField(max_length=1)
-    firstname = models.CharField(max-length=30)
-    lastname = models.CharField(max-length=30)
+    firstname = models.CharField(max_length=30, default='default')
+    lastname = models.CharField(max_length=30, default='default')
     # TODO: check for users with same name. Maybe unique=True?
     # username = models.CharField(user_firstname + " " + user_lastname)
 
-    user_type = models.CharField(blank=True, choices=UserTypes.choices, max_length=1)
     UserTypes = models.TextChoices('User Type', 'Player Bartender Sponsor Manager')
+    user_type = models.CharField(blank=True, choices=UserTypes.choices, max_length=30)
 
     # allow users to be multiple types simultaneously
     player = models.BooleanField(default=True) # default user type
