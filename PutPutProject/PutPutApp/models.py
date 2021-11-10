@@ -5,6 +5,17 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_type= models.CharField(max_length=1, default='P')
+    account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
+
+    def isManager(self):
+        if self.user_type == 'M':
+            return True
+        return False
+
+    def __str__(self):
+        return str(self.user) + " - " + self.user_type
+      
     # user_type= models.CharField(max_length=1)
     firstname = models.CharField(max_length=30, default='default')
     lastname = models.CharField(max_length=30, default='default')
