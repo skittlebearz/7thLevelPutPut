@@ -20,7 +20,7 @@ class OrderForm(forms.Form):
             queryset=menu,
             required=True,
             widget=forms.RadioSelect)
-    location = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(18)])
+    location = forms.IntegerField(label="Hole Number", validators=[MinValueValidator(1),MaxValueValidator(18)])
 
 class RemoveDrinkForm(forms.Form):
     menu = Drink.objects.all()

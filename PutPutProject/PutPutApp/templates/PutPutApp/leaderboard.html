@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Leaderboard{% endblock %}
+
+{% block background %}
+<!-- {% static 'leaderboard.svg' %} -->
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pb-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="mask p-5" style="background-color: rgba(255, 255, 255, 0.5);">
+        <div class=" text-center">
+          <h2>Leaderboard</h2>
+        </div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">POS</th>
+              <th scope="col">PLAYER</th>
+              <th scope="col">TO PAR</th>
+              <th scope="col">TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- TODO: apply dynamic code -->
+            <!-- {% for player in leaderboard|slice:"10" %}
+            <tr>
+              <th scope="row">{{ player.count }}</th>
+              <td>{{ player.name }}</td>
+              <td>{{ player.score|sub:par }}</td>
+              <td>{{ player.score }}</td>
+            </tr>
+            {{ member.first_name }}
+            {% endfor %} -->
+
+
+            <tr>
+              <th scope="row">1</th>
+              <td>Selene Otto</td>
+              <td>-4</td>
+              <td>31</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob Thornton</td>
+              <td>-3</td>
+              <td>32</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Tina Jones</td>
+              <td>E</td>
+              <td>35</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Paul Walker</td>
+              <td>+6</td>
+              <td>41</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Bruce Banner</td>
+              <td>+8</td>
+              <td>43</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Lance Elliot</td>
+              <td>+11</td>
+              <td>46</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>Rylee Freud</td>
+              <td>+13</td>
+              <td>48</td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td>Dwayne Johnson</td>
+              <td>+15</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <th scope="row">9</th>
+              <td>Paul Atreides</td>
+              <td>+19</td>
+              <td>54</td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>Barbara Holland</td>
+              <td>+24</td>
+              <td>59</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -86,9 +86,10 @@ def manage_menu(request):
             drink_id = request.POST['drink']
             drink_to_delete = get_object_or_404(Drink, pk=drink_id)
             drink_to_delete.delete()
-
         return HttpResponseRedirect(request.path_info)
 
+def leaderboard(request):
+    return render(request, "PutPutApp/leaderboard.html")
 
 def manage_users(request):
     if request.method == "GET":
