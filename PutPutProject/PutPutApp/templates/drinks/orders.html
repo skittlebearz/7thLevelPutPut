@@ -22,6 +22,10 @@
 				<h3>{{ order.name }}</h3>
 				<h4>{{ order.drink }}</h4>
 				<h4> {{ order.location}} </h4>
+				<form action="{% url 'fulfill_order' order_id=order.pk %}" method="POST">
+					        {% csrf_token %}
+  <input type="submit" value="Fulfill"/>
+</form>
 			</div>
 
 			{% endfor %}

@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}Menu | Tavern{% endblock %}
 
@@ -33,6 +35,11 @@
 
 					{% endfor %} -->
 
+					<form action="/menu/" method="post">
+						{% csrf_token %}
+						{{ form }}
+						<input value="Order Drink" input type="submit">
+					</form>
 
 					<div class="col">
 						<div class="card h-100">

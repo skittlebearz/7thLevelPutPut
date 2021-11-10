@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Manage Menu{% endblock %}
 
 {% block background %}
-<!-- {% static 'tavern.svg' %} -->
+{% static 'tavern.svg' %}
 {% endblock %}
 
 {% block content %}
@@ -34,10 +35,17 @@
 
 			<form action="/managemenu/" method="post">
 				{% csrf_token %}
-				{{ form }}
-				<input value="Add Drink" input type="submit">
+				{{ add_drink_form }}
+				<input value="Add Drink" name="add_drink" input type="submit">
 			</form>
-		</div>
+			<h1> Delete a drink </h1>
+
+			<form action="/managemenu/" method="post">
+				{% csrf_token %}
+				{{ remove_drink_form }}
+				<input value="Remove Drink" name="remove_drink" input type="submit">
+			</form>
+	</div>
 	</div>
 </div>
 {% endblock %}

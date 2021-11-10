@@ -60,7 +60,7 @@
   <!-- Background image -->
   <div class="bg-image" style="
   /* TODO: update custom backgrounds for each page */
-  /* background-image: url('{% block background }{% endblock %}'); */
+  /* background-image: url('{% block background %}{% endblock %}'); */
   background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
   /* background-image: url('https://static.vecteezy.com/system/resources/previews/002/297/055/non_2x/green-golf-field-background-free-vector.jpg'); */
 
@@ -73,7 +73,7 @@
 ">
 
     <!-- Dynamic Top Navigation Menu -->
-    { include "topnav.html" }
+    {% include "topnav.html" %}
 
     <!-- Page specific content -->
     {% block content %}

@@ -1,7 +1,8 @@
 from django.contrib.auth import login
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm
+from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm
 from .models import Drink, Orders
 # Create your views here.
 def dashboard(request):
@@ -37,8 +38,9 @@ def menu(request):
         if form.is_valid():
             new_order = Orders()
             new_order.name = request.POST['name']
-            new_order.drink = request.POST['drink']
             new_order.location = request.POST['location']
+            drink_id = request.POST['drink']
+            new_order.drink = get_object_or_404(Drink, pk=drink_id) 
             new_order.save()
         return render(request, 'drinks/menu.html')
 
@@ -50,16 +52,25 @@ def orders(request):
             {"orders": orders}
             )
 
+def fulfill_order(request, order_id):
+    if request.method == "POST":
+        order = get_object_or_404(Orders, pk=order_id) 
+        order.delete()
+        return redirect("orders")
+
+
+
 def manage_menu(request):
     if request.method == "GET":
         drink_menu = Drink.objects.all()
         return render(request, 'drinks/manage_menu.html',
                 {
-                    "form": AddDrinkForm,
-                    "drink_menu": drink_menu
+                    "add_drink_form": AddDrinkForm,
+                    "drink_menu": drink_menu,
+                    "remove_drink_form" : RemoveDrinkForm
                     }
                 )
-    if request.method == "POST":
+    if request.method == "POST" and 'add_drink' in request.POST:
         form = AddDrinkForm(request.POST)
         if form.is_valid():
             new_drink = Drink()
@@ -71,3 +82,15 @@ def manage_menu(request):
 
 def leaderboard(request):
     return render(request, "PutPutApp/leaderboard.html")
+        return HttpResponseRedirect(request.path_info)
+
+    if request.method == "POST" and 'remove_drink' in request.POST:
+        form = RemoveDrinkForm(request.POST)
+        if form.is_valid():
+            drink_id = request.POST['drink']
+            drink_to_delete = get_object_or_404(Drink, pk=drink_id) 
+            drink_to_delete.delete()
+ 
+        return HttpResponseRedirect(request.path_info)
+
+
