@@ -5,50 +5,21 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Favicon -->
   <!-- TODO: update image - Temporary Logo -->
+  <!-- favicon source: https://upload.wikimedia.org/wikipedia/commons/3/36/Letter_M%2C_drop_capital_illustration.png -->
   <!-- <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/> -->
   <link rel="shortcut icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/3/36/Letter_M%2C_drop_capital_illustration.png" />
 
-  <!-- Bootstrap CSS -->
+  <!-- CSS Assets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-  <!-- Font Awesome free package -->
-  <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
-  <!-- Font Awesome Free package Web Font + CSS -->
-  <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
-
-  <!-- Font & Card Hover CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-  <style>
-    .card {
-      transition: transform .1s;
-    }
-
-    .card:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 11px rgba(33, 33, 33, .2);
-    }
-
-    .medieval {
-      font-family: 'MedievalSharp', cursive;
-    }
-
-    .arrow-down {
-      width: 0;
-      height: 0;
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-
-      border-top: 20px solid #0d6efd;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="{% static 'PutPutApp/style.css' %}">
 
   <title>{% block title %}{% endblock %} | Medieval Minigolf</title>
 </head>
@@ -57,29 +28,12 @@
   <!-- Javascript Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-  <!-- Background image -->
-  <div class="bg-image" style="
-  /* TODO: update custom backgrounds for each page */
-  /* background-image: url('{% block background %}{% endblock %}'); */
-  background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
-  /* background-image: url('https://static.vecteezy.com/system/resources/previews/002/297/055/non_2x/green-golf-field-background-free-vector.jpg'); */
+  <!-- Dynamic Top Navigation Menu -->
+  {% include "topnav.html" %}
 
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-">
-
-    <!-- Dynamic Top Navigation Menu -->
-    {% include "topnav.html" %}
-
-    <!-- Page specific content -->
-    {% block content %}
-    {% endblock %}
-
-  </div>
+  <!-- Page specific content -->
+  {% block content %}
+  {% endblock %}
 </body>
 
 </html>
