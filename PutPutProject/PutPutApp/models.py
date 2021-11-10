@@ -7,13 +7,11 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type= models.CharField(max_length=1, default='P')
     account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
-    def toggle(self):
-        if self.user_type == 'P':
-            self.user_type = 'S'
-        elif self.user_type == 'S':
-            self.user_type = 'M'
-        else:
-            self.user_type = 'P'
+
+    def isManager(self):
+        if self.user_type == 'M':
+            return True
+        return False
 
     def __str__(self):
         return str(self.user) + " - " + self.user_type

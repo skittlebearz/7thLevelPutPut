@@ -95,6 +95,7 @@ def manage_users(request):
         users = Profile.objects.all()
         return render(request, 'manager/manage_users.html',
                 {
+                    "curUser":request.user,
                     "users": users,
                     "form":ManageUserForm,
                 }
@@ -106,6 +107,7 @@ def manage_users(request):
             user_type = request.POST['user_type']
             user = get_object_or_404(Profile, pk=user_id)
             user.user_type = user_type[0]
-            print(user, user.user_type)
+            # print(user, user.user_type)
             user.save()
+            print(user.user_type)
         return HttpResponseRedirect(request.path_info)

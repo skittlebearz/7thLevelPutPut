@@ -8,33 +8,35 @@
 
 {% block content %}
 
+
 <div class="container mt-5 pb-5">
   <div class="row justify-content-center">
     <div class="col-lg-3">
+      <!-- if curUser.isManager -->
       <div class="mask" style="background-color: rgba(255, 255, 255, 0.5);">
         <div class="width:100%">
           <form method="post" style="width:200px;margin:auto;padding:20px;">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" value="Save">
+
           </form>
         </div>
 
       </div>
+      <!-- endif -->
 
-      <!-- if user.user_type == 'M' -->
-      <!--  for u in users
+      <!--  if user.user_type == 'M'
+       for u in users
       <div class="card m-5" style="background-color: rgba(255,255,255,0.5)">
           <div class="card-body">
               <h1 class="card-title" style="float:left">{{ u.user }}</h1>
               <h1 class="card-text" style="float:right; margin:0 20px 0 20px">{{ u.user_type }}</h1>
               <h2 class="card-text" style="float:right">{{ u.account_balance }}</h2>
-
-
           </div>
       </div>
-       endfor  -->
-      <!-- endif -->
+       endfor
+       endif  -->
     </div>
   </div>
 </div>
