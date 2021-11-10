@@ -3,8 +3,9 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm, ManageUserForm
-from .models import Drink, Orders, Profile
-# Create your views here.
+from .models import Drink, Orders, Profile, Score 
+
+
 def dashboard(request):
     return render(request, "PutPutApp/dashboard.html")
 
@@ -87,6 +88,14 @@ def manage_menu(request):
             drink_to_delete = get_object_or_404(Drink, pk=drink_id)
             drink_to_delete.delete()
         return HttpResponseRedirect(request.path_info)
+
+def scorecard(request):
+    if request.method == "GET":
+        scores = Score.objects.filter(user__username__exact=request.user.username)
+        # TODO chain filter for current tournament
+        return render(request, 'score/scorecard.html', {'scores' : scores})
+    if request.method == "POST":
+        pass
 
 def leaderboard(request):
     return render(request, "PutPutApp/leaderboard.html")
