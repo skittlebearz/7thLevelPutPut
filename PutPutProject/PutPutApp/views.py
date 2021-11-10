@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm
 from .models import Drink, Orders
-# Create your views here.
+
+
 def dashboard(request):
     return render(request, "PutPutApp/dashboard.html")
 
@@ -90,4 +91,8 @@ def manage_menu(request):
         return HttpResponseRedirect(request.path_info)
 
 
-
+def scorecard(request):
+    if request.method == "GET":
+        return render(request, 'score/scorecard.html')
+    if request.method == "POST":
+        pass

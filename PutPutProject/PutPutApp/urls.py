@@ -1,6 +1,6 @@
 from django.conf.urls import include
 from django.urls import path
-from PutPutApp.views import dashboard, register, menu, manage_menu, orders, login, fulfill_order
+from PutPutApp.views import *
 
 urlpatterns = [
     path("register/", register, name="register"),
@@ -11,4 +11,6 @@ urlpatterns = [
     path("managemenu/", manage_menu, name="manage_menu"),
     path("orders/", orders, name="orders"),
     path("orders/<int:order_id>", fulfill_order, name='fulfill_order'),
+    path("", dashboard, name="dashboard"),
+    path("scorecard/", scorecard, name="scorecard")
 ]
