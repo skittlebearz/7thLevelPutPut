@@ -90,9 +90,12 @@ def manage_menu(request):
  
         return HttpResponseRedirect(request.path_info)
 
-
 def scorecard(request):
     if request.method == "GET":
         return render(request, 'score/scorecard.html')
     if request.method == "POST":
         pass
+
+def leaderboard(request):
+    return render(request, "PutPutApp/leaderboard.html")
+
