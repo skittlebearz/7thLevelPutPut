@@ -5,15 +5,25 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type= models.CharField(max_length=1)
+    user_type= models.CharField(max_length=1, default='P')
     account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
+    def toggle(self):
+        if self.user_type == 'P':
+            self.user_type = 'S'
+        elif self.user_type == 'S':
+            self.user_type = 'M'
+        else:
+            self.user_type = 'P'
+
+    def __str__(self):
+        return str(self.user) + " - " + self.user_type
 
 class Score(models.Model):
     user = models.ManyToManyField(User)
     day = models.DateField()
     num_strokes = models.IntegerField()
     hole = models.IntegerField()
-    
+
 class Drink(models.Model):
     name = models.CharField(max_length=30)
     cost = models.DecimalField(decimal_places=2, max_digits=6)
