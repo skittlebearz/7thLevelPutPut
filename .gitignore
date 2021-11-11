@@ -1,4 +1,4 @@
-/PutPutProject/PutPutProject/__pycache__
+__pycache__
 mysql.cnf
-PutPutProject/PutPutApp/__pycache__
 /putputvenv
+db.sqlite3
