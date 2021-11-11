@@ -29,6 +29,10 @@ class RemoveDrinkForm(forms.Form):
             required=True,
             widget=forms.RadioSelect)
 
+class ScorecardForm(forms.Form):
+    hole = forms.IntegerField(label="Hole Number", validators=[MinValueValidator(1),MaxValueValidator(18)])
+    num_strokes = forms.IntegerField(label="Number of Strokes", validators=[MinValueValidator(1),MaxValueValidator(99)])
+
 class ManageUserForm(forms.Form):
     menu = Profile.objects.all()
     user = forms.ModelChoiceField(

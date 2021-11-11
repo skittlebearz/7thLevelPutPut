@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
+
+{% block content %}
 {% for score in scores %}
 <p> Hole: {{ score.hole }}, Strokes: {{ score.num_strokes }} </p>
 {% endfor %}
+<form action="/scorecard/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
