@@ -21,6 +21,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'manage_menu' %}">Manage Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{#% url 'course' %#}">Course</a>
             <a class="nav-link active" aria-current="page" target="_blan" href="https://static.vecteezy.com/system/resources/previews/000/186/919/original/isometric-golf-course-illustration-vector.jpg">Course</a>
@@ -29,14 +35,14 @@
 
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          {% if user.is_authenticated %}
+          {#% if user.is_authenticated %#}
           <li class="nav-item dropdown bg-none ms-auto">
             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Welcome, {{ user.get_firstname|title }}
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% if user.is_player %}
+          {#% if user.is_player %#}
               <li class="text-center ">Player</li>
               <li>
                 <hr class="dropdown-divider">
@@ -68,8 +74,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              {% if user.is_barkeep %}
+              {#% endif %#}
+              {#% if user.is_barkeep %#}
               <li class="text-center ">Barkeep</li>
               <li>
                 <hr class="dropdown-divider">
@@ -98,8 +104,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              {% if user.is_sponsor %}
+              {#% endif %#}
+              {#% if user.is_sponsor %#}
               <li class="text-center ">Sponsor</li>
               <li>
                 <hr class="dropdown-divider">
@@ -109,8 +115,8 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              {% if user.is_manager %}
+              {#% endif %#}
+              {#% if user.is_manager %#}
               <li class="text-center ">Manager</li>
               <li>
                 <hr class="dropdown-divider">
@@ -120,14 +126,14 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
+              {#% endif %#}
               <li><a class="dropdown-item" href="#">Account</a></li>
               <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>
           </li>
-          {% else %}
+          {#% else %#}
           <li><a class="btn btn-outline-primary px-4 shadow border-2" href="{% url 'login' %}">Login</a></li>
-          {% endif %}
+          {#% endif %#}
         </ul>
         <hr class="d-none d-sm-block d-md-none">
       </div>
