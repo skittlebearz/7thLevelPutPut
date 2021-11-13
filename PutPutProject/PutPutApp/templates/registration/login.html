@@ -2,29 +2,25 @@
 
 {% block title %}Login{% endblock %}
 
-{% block background %}
-<!-- {#% static 'login.svg' %#} -->
-{% endblock %}
-
 {% block content %}
-<!-- Background image -->
-<div class="bg-image p-5 text-center shadow-1-strong mb-5 text-white" style="background-image: url('https://mdbootstrap.com/img/new/slides/003.jpg');">
-  <h1 class="display-1 font-weight-bold">Login</h1>
+
+<div class="container mt-5 pb-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="mask">
+        <h1 class="mb-3 display-1 fw-bold text-uppercase">Login</h1>
+        <form method="post">
+          <!-- This is a basic placeholder login form -->
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Login">
+        </form>
+        <br>
+        <a class="btn btn-primary border-2 btn-lg shadow m-3" href="{% url 'register' %}" role="button">Register</a>
+        <a class="btn btn-primary border-2 btn-lg shadow m-3" href="{% url 'dashboard' %}" role="button">Home</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12 px-3">
-  <form method="post">  <!-- This is a basic placeholder login form -->
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-  </form>
-  <br>
-  <a class="btn btn-outline-primary" href="{% url 'register' %}">Need to register?</a>
-  <br><br>
-  <a class="btn btn-outline-primary" href="{% url 'dashboard' %}">Back to dashboard</a>
-</div>
-</div>
-</div>
 {% endblock %}

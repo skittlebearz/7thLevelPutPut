@@ -2,22 +2,19 @@
 
 {% block title %}Leaderboard{% endblock %}
 
-{% block background %}
-<!-- {% static 'leaderboard.svg' %} -->
-{% endblock %}
-
 {% block content %}
 <div class="container mt-5 pb-5">
   <div class="row">
     <div class="col-lg-8">
-      <div class="mask p-5" style="background-color: rgba(255, 255, 255, 0.5);">
+      <div class="mask">
         <div class=" text-center">
-          <h2>Leaderboard</h2>
+          <!-- <h1 class="mb-3 display-1 fw-bold text-uppercase medieval">Leaderboard</h1> -->
+          <h1 class="mb-3 display-1 fw-bold text-uppercase medieval">ye top 10 <br />Champions</h1>
         </div>
-        <table class="table table-hover">
+        <table class="table fw-bold table-hover table-sm" style="border-color:black; border:5px;">
           <thead>
             <tr>
-              <th scope="col">POS</th>
+              <th scope="col" >POS</th>
               <th scope="col">PLAYER</th>
               <th scope="col">TO PAR</th>
               <th scope="col">TOTAL</th>
@@ -26,17 +23,17 @@
           <tbody>
 
             <!-- TODO: apply dynamic code -->
-            <!-- {% for player in leaderboard|slice:"10" %}
+            <!-- {#% for player in leaderboard|slice:"10" %#}
             <tr>
-              <th scope="row">{{ player.count }}</th>
-              <td>{{ player.name }}</td>
-              <td>{{ player.score|sub:par }}</td>
-              <td>{{ player.score }}</td>
+              <th scope="row" class="text-center">{#{ player.count }#}</th>
+              <td>{#{ player.name }#}</td>
+              <td class="text-center">{#{ player.score|sub:par }#}</td>
+              <td class="text-center">{#{ player.score }#}</td>
             </tr>
-            {{ member.first_name }}
-            {% endfor %} -->
+            {#% endfor %}# -->
 
 
+            <!-- Example Leaderboard Feed -->
             <tr>
               <th scope="row">1</th>
               <td>Selene Otto</td>
