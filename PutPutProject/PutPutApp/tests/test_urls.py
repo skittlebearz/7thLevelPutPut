@@ -15,7 +15,7 @@ class TestUrls(SimpleTestCase):
 
     # TODO: resolve error
     # def test_login_url_resolved(self):
-    #     url = reverse('login')
+    #     url = reverse('Login')
     #     self.assertEquals(resolve(url).func, login)
 
     # TODO: research how to test account page if necessary

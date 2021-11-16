@@ -11,7 +11,7 @@ class TestModels(TestCase):
             player = True,
         )
 
-    # TODO: can someone verify this?
+    # TODO: can someone verify these 4 tests?
     def test_player_firstname(self):
         self.assertEquals(self.player_user_type.firstname, 'Tiger')
 
