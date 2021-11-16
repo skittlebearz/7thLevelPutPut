@@ -1,4 +1,327 @@
 {% extends 'base.html' %}
-{% for score in scores %}
+{% block title %}Scorecard | {% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="mask">
+
+                {% for score in scores %}
 <p> Hole: {{ score.hole }}, Strokes: {{ score.num_strokes }} </p>
 {% endfor %}
+
+                <div class=" text-center">
+                <h1 class="medieval display-1 fw-bold">Scorecard</h1>
+<!--                    TODO: make total dynamic, based on user database number-->
+                    <h2 class="mb-5">Total: #</h2>
+
+                    <div class="row">
+
+
+                                        {% for score in scores %}
+<p> Hole: {{ score.hole }}, Strokes: {{ score.num_strokes }} </p>
+
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole {{ score.hole }}
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">{{ score.num_strokes }}</h2>
+                                <p class="card-text text-muted">par {{ score.par }}</p>
+                                <p class="card-text text-muted">par 4</p>
+							</div>
+
+						</div>
+
+                        </div>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+                        <!-- Example Scorecard Feed -->
+<!--						TODO: add javascript counter animation-->
+						<p class="text-muted">Example Scorecard Feed</p>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 1
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 2
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 3
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 4
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 5
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 6
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 7
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 8
+							</span>
+							<div class="card-body">
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 9
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 10
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 11
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 12
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 13
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 14
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 15
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 16
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 17
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+                        <div class="col m-lg-3 my-3">
+
+                            <div class="card h-100">
+							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
+								Hole 18
+							</span>
+							<div class="card-body">
+
+								<h2 class="h5 card-title">#</h2>
+								<p class="card-text text-muted">par #</p>
+							</div>
+
+						</div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

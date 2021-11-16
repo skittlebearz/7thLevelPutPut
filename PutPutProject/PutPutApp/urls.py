@@ -16,7 +16,5 @@ urlpatterns = [
     path("orders/", orders, name="orders"),
     path("leaderboard/", leaderboard, name="leaderboard"),
     path("orders/<int:order_id>", fulfill_order, name='fulfill_order'),
-    path("", dashboard, name="dashboard"),
     path("scorecard/", scorecard, name="scorecard")
-
 ]
