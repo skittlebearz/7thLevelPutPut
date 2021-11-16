@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django import forms
-from .models import Drink
+from .models import Drink, Profile
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
@@ -29,5 +29,14 @@ class RemoveDrinkForm(forms.Form):
             required=True,
             widget=forms.RadioSelect)
 
+class ManageUserForm(forms.Form):
+    menu = Profile.objects.all()
+    user = forms.ModelChoiceField(
+            queryset=menu,
+            required=True,
+            widget=forms.RadioSelect
+    )
+    CHOICES=[("Player","Player"), ("Manager","Manager"), ("Sponsor","Sponsor")]
 
+    user_type = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect, required=True)
 
