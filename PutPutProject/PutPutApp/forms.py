@@ -29,12 +29,18 @@ class RemoveDrinkForm(forms.Form):
             required=True,
             widget=forms.RadioSelect)
 
+
 class DateInput(forms.DateInput):
     input_type = 'date'
 
 class SponsorForm(forms.Form):
     date = forms.DateField(widget=DateInput, label="Enter date to reserve for tournament")
     tournament_name = forms.CharField(max_length=60)
+
+class ScorecardForm(forms.Form):
+    hole = forms.IntegerField(label="Hole Number", validators=[MinValueValidator(1),MaxValueValidator(18)])
+    num_strokes = forms.IntegerField(label="Number of Strokes", validators=[MinValueValidator(1),MaxValueValidator(99)])
+
 
 class ManageUserForm(forms.Form):
     menu = Profile.objects.all()

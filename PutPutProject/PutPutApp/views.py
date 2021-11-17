@@ -2,8 +2,9 @@ from django.contrib.auth import login
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+
 from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm, ManageUserForm, SponsorForm
-from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest
+from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest, User
 
 
 def dashboard(request):
@@ -132,11 +133,17 @@ def manage_menu(request):
 
 def scorecard(request):
     if request.method == "GET":
-        scores = Score.objects.filter(user__username__exact=request.user.username)
-        # TODO chain filter for current tournament
-        return render(request, 'score/scorecard.html', {'scores' : scores})
+        scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today())
+        return render(request, 'score/scorecard.html', {'scores' : scores, 'form': ScorecardForm})
     if request.method == "POST":
-        pass
+        form = ScorecardForm(request.POST)
+        if form.is_valid():
+
+            score = Score(day=date.today(), hole=request.POST['hole'], num_strokes=request.POST['num_strokes'])
+            score.save()
+            score.user.add(request.user)
+    return HttpResponseRedirect(request.path_info)
+            
 
 def leaderboard(request):
     return render(request, "PutPutApp/leaderboard.html")
