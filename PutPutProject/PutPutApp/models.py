@@ -76,9 +76,15 @@ class Orders(models.Model):
     drink = models.CharField(max_length=240)
     location = models.PositiveIntegerField()
 
-class Calandar(models.Model):
-    sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+class SponsorRequest(models.Model):
+    #sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
     day = models.DateField()
+    tournament_name = models.CharField(max_length=60)
+
+class Calendar(models.Model):
+    #sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    day = models.DateField()
+    tournament_name = models.CharField(max_length=60)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

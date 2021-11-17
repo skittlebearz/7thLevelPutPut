@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Sponser{% endblock %}
 
 {% block content %}
 <div class="container mt-5 pb-5">
@@ -8,7 +8,29 @@
     <div class="col-lg-8 order-2 order-lg-1 mb-3">
       <div class="mask">
         <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">Schedule of <br />Events</h1>
-        <!-- TODO: allow event selection for registration -->
+
+        {% for event in requests %}
+
+              <div class="card w-100 text-left onHoverFloat my-3">
+                <div class="card-body">
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="p-2">
+                      <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+                    </div>
+                    <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
+		  </div>
+
+		  <form action="{% url 'approve_tournament' sponsor_request_id=event.pk %}" method="POST">
+			  {% csrf_token %}
+			  <input type="submit" value="Approve" name="Approve"/>
+			  <input type="submit" value="Decline" name="Decline"/>
+		  </form>
+
+                </div>
+              </div>
+
+            
+	{% endfor %} 
 
         {% for event in events %}
 
@@ -24,22 +46,14 @@
                 </div>
               </div>
 
-              {% endfor %}
 
-    <div class="col-lg-4 order-1 order-lg-2">
-      <div class="mask">
-        <h1>Register</h1>
-        <!-- Registration form -->
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" value="Register">
-        </form>
+        {% endfor %}
 
-        <a class="btn btn-primary shadow mt-5 text-center" href="{% url 'login' %}" role="button">Returning User</a>
+	
+
       </div>
     </div>
-  </div>
+ </div>
 </div>
 
 {% endblock %}
