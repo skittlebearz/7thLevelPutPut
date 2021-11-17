@@ -27,6 +27,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'scorecard' %}">Scorecard</a>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{#% url 'course' %#}">Course</a>
             <a class="nav-link active" aria-current="page" target="_blan" href="https://static.vecteezy.com/system/resources/previews/000/186/919/original/isometric-golf-course-illustration-vector.jpg">Course</a>
@@ -47,25 +50,25 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">
-                  <div class="d-flex flex-row justify-content-between">
+              <li><a class="dropdown-item disabled" href="#">
+                  <div class="d-flex flex-row justify-content-between disabled">
                     <div>
                       <!-- <i class="fas fa-wallet text-left"></i> -->
                       <p class="p-0 m-0">Wallet</p>
                     </div>
                     <!-- <div><span class="badge text-right rounded-pill bg-success">${{ user.get_balance }}</span></div> -->
-                    <div><span class="badge text-right rounded-pill bg-success">$12.95</span></div>
+                    <div><span class="badge text-right rounded-pill bg-success">$#</span></div>
                   </div>
                 </a>
               </li>
-              <li><a class="dropdown-item" href="#">
+              <li><a class="dropdown-item" href="{% url 'scorecard' %}">
                   <div class="d-flex flex-row justify-content-between">
                     <div>
                       <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Scorecard</p>
                     </div>
                     <!-- <div><span class="badge text-right rounded-pill bg-success">$ {# user.get_score (of current tourney) #} </span></div> -->
-                    <div><span class="badge text-right rounded-pill bg-warning">37</span></div>
+                    <div><span class="badge text-right rounded-pill bg-warning">#</span></div>
                   </div>
                 </a>
               </li>
@@ -80,16 +83,16 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">
-                  <div class="d-flex flex-row justify-content-between">
-                    <div>
-                      <!-- <i class="fas fa-clock"></i> -->
-                      <p class="p-0 m-0">Clock In</p>
-                    </div>
-                    <div><span class="badge text-right rounded-pill bg-success">01:29</span></div>
-                  </div>
-                </a>
-              </li>
+<!--              <li><a class="dropdown-item disabled" href="#">-->
+<!--                  <div class="d-flex flex-row justify-content-between">-->
+<!--                    <div>-->
+<!--                      &lt;!&ndash; <i class="fas fa-clock"></i> &ndash;&gt;-->
+<!--                      <p class="p-0 m-0">Clock In</p>-->
+<!--                    </div>-->
+<!--                    <div><span class="badge text-right rounded-pill bg-success">#</span></div>-->
+<!--                  </div>-->
+<!--                </a>-->
+<!--              </li>-->
               <!-- <li><a class="dropdown-item" href="#">Clock In <TotalTime></a></li> -->
               <li><a class="dropdown-item" href="{% url 'orders' %}">
                   <div class="d-flex flex-row justify-content-between">
@@ -97,7 +100,7 @@
                       <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Queue</p>
                     </div>
-                    <div><span class="badge text-right rounded-pill bg-warning">17</span></div>
+                    <div><span class="badge text-right rounded-pill bg-warning">#</span></div>
                   </div>
                 </a>
               </li>
@@ -110,7 +113,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Manage Events</a></li>
+              <li><a class="dropdown-item disabled" href="#">Manage Events</a></li>
               <!-- <li><a class="dropdown-item" href="#">Queue <NumItems></a></li> -->
               <li>
                 <hr class="dropdown-divider">
@@ -127,8 +130,8 @@
                 <hr class="dropdown-divider">
               </li>
               {#% endif %#}
-              <li><a class="dropdown-item" href="#">Account</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item disabled" href="#">Account</a></li>
+              <li><a class="dropdown-item disabled" href="#">Logout</a></li>
             </ul>
           </li>
           {#% else %#}

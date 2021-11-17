@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register | {% endblock %}
 
 {% block content %}
 <div class="container mt-5 pb-5">
@@ -27,6 +27,7 @@
               {#% endfor %#} -->
 
         <!-- Example Calendar Feed -->
+        <p class="text-muted">Example Calendar Feed</p>
         <div class="card w-100 text-left onHoverFloat my-3">
           <div class="card-body">
             <div class="d-flex flex-row justify-content-between">
@@ -87,7 +88,7 @@
     </div>
     <div class="col-lg-4 order-1 order-lg-2">
       <div class="mask">
-        <h1>Rgister</h1>
+        <h1>Register</h1>
         <!-- Registration form -->
         <form method="post">
           {% csrf_token %}
