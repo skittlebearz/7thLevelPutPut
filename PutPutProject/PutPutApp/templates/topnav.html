@@ -1,11 +1,8 @@
-<!-- Top Navigation, TODO: separate file, user-based menu -->
-<!-- https://getbootstrap.com/docs/5.0/components/navbar/ -->
-<div class="mask" style="background-color: rgba(255, 255, 255, 0.5);">
-  <nav class="navbar navbar-expand-lg sticky-top navbar-light fw-bold">
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top fw-bold" style="">
 
     <div class="container">
       <!-- TODO: update image - Temporary Logo -->
-      <a class="navbar-brand" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Letter_M%2C_drop_capital_illustration.png" alt="" style="height: 50px;"></a>
+      <a class="navbar-brand" href="{% url 'dashboard' %}"><img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Letter_M%2C_drop_capital_illustration.png" alt="" style="height: 50px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -25,43 +22,53 @@
             <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="{#% url 'course' %#}">Course</a> -->
-            <a class="nav-link active" aria-current="page" href="https://static.vecteezy.com/system/resources/previews/000/186/919/original/isometric-golf-course-illustration-vector.jpg">Course</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'manage_menu' %}">Manage Menu</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'scorecard' %}">Scorecard</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{#% url 'course' %#}">Course</a>
+            <a class="nav-link active" aria-current="page" target="_blan" href="https://static.vecteezy.com/system/resources/previews/000/186/919/original/isometric-golf-course-illustration-vector.jpg">Course</a>
+          </li> -->
         </ul>
 
-	{% if user.is_authenticated %}
+
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown ms-auto">
+          {#% if user.is_authenticated %#}
+          <li class="nav-item dropdown bg-none ms-auto">
             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Welcome, {{ user.get_firstname|title }}
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% if user.is_player %}
+          {#% if user.is_player %#}
               <li class="text-center ">Player</li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">
-                  <div class="d-flex flex-row justify-content-between">
+              <li><a class="dropdown-item disabled" href="#">
+                  <div class="d-flex flex-row justify-content-between disabled">
                     <div>
                       <!-- <i class="fas fa-wallet text-left"></i> -->
                       <p class="p-0 m-0">Wallet</p>
                     </div>
                     <!-- <div><span class="badge text-right rounded-pill bg-success">${{ user.get_balance }}</span></div> -->
-                    <div><span class="badge text-right rounded-pill bg-success">$12.95</span></div>
+                    <div><span class="badge text-right rounded-pill bg-success">$#</span></div>
                   </div>
                 </a>
               </li>
-              <li><a class="dropdown-item" href="#">
+              <li><a class="dropdown-item" href="{% url 'scorecard' %}">
                   <div class="d-flex flex-row justify-content-between">
                     <div>
                       <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Scorecard</p>
                     </div>
                     <!-- <div><span class="badge text-right rounded-pill bg-success">$ {# user.get_score (of current tourney) #} </span></div> -->
-                    <div><span class="badge text-right rounded-pill bg-warning">37</span></div>
+                    <div><span class="badge text-right rounded-pill bg-warning">#</span></div>
                   </div>
                 </a>
               </li>
@@ -70,22 +77,22 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              {% if user.is_bartender %}
-              <li class="text-center ">Bartender</li>
+              {#% endif %#}
+              {#% if user.is_barkeep %#}
+              <li class="text-center ">Barkeep</li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">
-                  <div class="d-flex flex-row justify-content-between">
-                    <div>
-                      <!-- <i class="fas fa-clock"></i> -->
-                      <p class="p-0 m-0">Clock In</p>
-                    </div>
-                    <div><span class="badge text-right rounded-pill bg-success">01:29</span></div>
-                  </div>
-                </a>
-              </li>
+<!--              <li><a class="dropdown-item disabled" href="#">-->
+<!--                  <div class="d-flex flex-row justify-content-between">-->
+<!--                    <div>-->
+<!--                      &lt;!&ndash; <i class="fas fa-clock"></i> &ndash;&gt;-->
+<!--                      <p class="p-0 m-0">Clock In</p>-->
+<!--                    </div>-->
+<!--                    <div><span class="badge text-right rounded-pill bg-success">#</span></div>-->
+<!--                  </div>-->
+<!--                </a>-->
+<!--              </li>-->
               <!-- <li><a class="dropdown-item" href="#">Clock In <TotalTime></a></li> -->
               <li><a class="dropdown-item" href="{% url 'orders' %}">
                   <div class="d-flex flex-row justify-content-between">
@@ -93,51 +100,45 @@
                       <!-- <i class="fas fa-trophy"></i> -->
                       <p class="p-0 m-0">Queue</p>
                     </div>
-                    <div><span class="badge text-right rounded-pill bg-warning">17</span></div>
+                    <div><span class="badge text-right rounded-pill bg-warning">#</span></div>
                   </div>
                 </a>
               </li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              {% if user.is_sponsor %}
+              {#% endif %#}
+              {#% if user.is_sponsor %#}
               <li class="text-center ">Sponsor</li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Manage Events</a></li>
+              <li><a class="dropdown-item disabled" href="#">Manage Events</a></li>
               <!-- <li><a class="dropdown-item" href="#">Queue <NumItems></a></li> -->
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              {% if user.is_manager %}
+              {#% endif %#}
+              {#% if user.is_manager %#}
               <li class="text-center ">Manager</li>
               <li>
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="{% url 'manage_menu' %}">Edit Drink Menu</a></li>
-	      <!--
-	      <li><a class="dropdown-item" href="{# % url 'django.contrib.auth.urls' %#}">Manage Users</a></li> -->
+	      <!-- <li><a class="dropdown-item" href="{# % url 'django.contrib.auth.urls' %#}">Manage Users</a></li> -->
               <li>
                 <hr class="dropdown-divider">
               </li>
-              {% endif %}
-              <li><a class="dropdown-item" href="#">Account</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              {#% endif %#}
+              <li><a class="dropdown-item disabled" href="#">Account</a></li>
+              <li><a class="dropdown-item disabled" href="#">Logout</a></li>
             </ul>
           </li>
+          {#% else %#}
+          <li><a class="btn btn-outline-primary px-4 shadow border-2" href="{% url 'login' %}">Login</a></li>
+          {#% endif %#}
         </ul>
-        {% else %}
-        <form class="d-flex">
-          <button class="btn btn-outline-primary px-4 shadow border-2" href="{% url 'login' %}">Login</button>
-        </form>
-        {% endif %}
-
         <hr class="d-none d-sm-block d-md-none">
       </div>
     </div>
-
   </nav>
-</div>

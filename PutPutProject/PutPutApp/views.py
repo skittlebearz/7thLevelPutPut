@@ -2,9 +2,10 @@ from django.contrib.auth import login
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm, ManageUserForm, ScorecardForm
-from .models import Drink, Orders, Profile, Score, User 
-from datetime import date
+
+from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm, ManageUserForm, SponsorForm
+from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest, User
+
 
 def dashboard(request):
     return render(request, "PutPutApp/dashboard.html")
@@ -14,9 +15,11 @@ def Login(request):
 
 def register(request):
     if request.method == "GET":
+        events = Calendar.objects.all()
         return render(
             request, "PutPutApp/register.html",
-            {"form": CustomUserCreationForm}
+            {"form": CustomUserCreationForm,
+             "events": events}
         )
     elif request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -58,6 +61,45 @@ def fulfill_order(request, order_id):
         order = get_object_or_404(Orders, pk=order_id)
         order.delete()
         return redirect("orders")
+
+def sponsor_requests(request):
+    if request.method == "GET":
+        events = Calendar.objects.all()
+        reservation_requests = SponsorRequest.objects.all()
+        return render(request, 'tournament/sponsor_requests.html', 
+                {"requests": reservation_requests,
+                "events": events}
+                )
+
+def approve_tournament(request, sponsor_request_id):
+    if request.method == "POST":
+        reservation = get_object_or_404(SponsorRequest, pk=sponsor_request_id)
+        if "Approve" in request.POST:
+            tournament = Calendar()
+            tournament.day = reservation.day
+            tournament.tournament_name = reservation.tournament_name
+            #tournament.sponsor = reservation.sponsor
+            tournament.save()
+        reservation.delete()
+        return redirect("sponsor_requests")
+
+def sponsor(request):
+    if request.method == "POST":
+        form = SponsorForm(request.POST)
+        if form.is_valid():
+            reservation_request = SponsorRequest()
+            reservation_request.day = request.POST['date']
+            reservation_request.tournament_name = request.POST['tournament_name']
+            reservation_request.save()
+
+        return HttpResponseRedirect(request.path_info)
+    elif request.method == "GET":
+        events = Calendar.objects.all()
+        return render(request, 'tournament/sponsor.html', 
+                {"form": SponsorForm,
+                "events": events}
+                )
+
 
 
 

@@ -22,12 +22,12 @@ class Profile(models.Model):
     # TODO: check for users with same name. Maybe unique=True?
     # username = models.CharField(user_firstname + " " + user_lastname)
 
-    UserTypes = models.TextChoices('User Type', 'Player Bartender Sponsor Manager')
+    UserTypes = models.TextChoices('User Type', 'Player Barkeep Sponsor Manager')
     user_type = models.CharField(blank=True, choices=UserTypes.choices, max_length=30)
 
     # allow users to be multiple types simultaneously
     player = models.BooleanField(default=True) # default user type
-    bartender = models.BooleanField(default=False) # admin approved by Manager
+    barkeep = models.BooleanField(default=False) # admin approved by Manager
     sponsor = models.BooleanField(default=False) # admin approved by Manager
     manager = models.BooleanField(default=False) # a superuser
 
@@ -44,8 +44,8 @@ class Profile(models.Model):
         return self.player
 
     @property
-    def is_bartender(self):
-        return self.bartender
+    def is_barkeep(self):
+        return self.barkeep
 
     @property
     def is_sponsor(self):
@@ -76,9 +76,15 @@ class Orders(models.Model):
     drink = models.CharField(max_length=240)
     location = models.PositiveIntegerField()
 
-class Calandar(models.Model):
-    sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+class SponsorRequest(models.Model):
+    #sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
     day = models.DateField()
+    tournament_name = models.CharField(max_length=60)
+
+class Calendar(models.Model):
+    #sponsor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    day = models.DateField()
+    tournament_name = models.CharField(max_length=60)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
