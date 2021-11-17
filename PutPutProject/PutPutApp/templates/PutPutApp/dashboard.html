@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Home | {% endblock %}
 
 {% block background %}
  {#% static 'home.svg' %#}
@@ -24,7 +24,8 @@
         <div class="row">
           <div class="col-lg-3">
             <!-- TODO: update image - Temporary Logo -->
-            <img class="w-100 my-3 mr-lg-3" src="https://upload.wikimedia.org/wikipedia/commons/3/36/Letter_M%2C_drop_capital_illustration.png" alt="">
+            {% load static %}
+            <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/favicon.png' %}" alt="Illuminated M">
           </div>
           <div class="col-lg-6">
             <h1 class="mb-3 display-1 fw-bold text-uppercase medieval">Medieval <br />Minigolf</h1>
