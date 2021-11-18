@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -7,7 +8,7 @@ from datetime import date
 from PutPutApp.forms import *
 from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest, User
 
-
+@login_required
 def dashboard(request):
     return render(request, "PutPutApp/dashboard.html")
 
@@ -29,6 +30,7 @@ def register(request):
             login(request, user)
             return redirect(reverse("dashboard"))
 
+@login_required
 def menu(request):
     if request.method == "GET":
         drink_menu = Drink.objects.all()
@@ -49,7 +51,7 @@ def menu(request):
             new_order.save()
         return render(request, 'drinks/menu.html')
 
-
+@login_required
 def orders(request):
     orders = Orders.objects.all()
     return render(
@@ -57,12 +59,14 @@ def orders(request):
             {"orders": orders}
             )
 
+@login_required
 def fulfill_order(request, order_id):
     if request.method == "POST":
         order = get_object_or_404(Orders, pk=order_id)
         order.delete()
         return redirect("orders")
 
+@login_required
 def sponsor_requests(request):
     if request.method == "GET":
         events = Calendar.objects.all()
@@ -72,6 +76,7 @@ def sponsor_requests(request):
                 "events": events}
                 )
 
+@login_required
 def approve_tournament(request, sponsor_request_id):
     if request.method == "POST":
         reservation = get_object_or_404(SponsorRequest, pk=sponsor_request_id)
@@ -84,6 +89,7 @@ def approve_tournament(request, sponsor_request_id):
         reservation.delete()
         return redirect("sponsor_requests")
 
+@login_required
 def sponsor(request):
     if request.method == "POST":
         form = SponsorForm(request.POST)
@@ -102,8 +108,7 @@ def sponsor(request):
                 )
 
 
-
-
+@login_required
 def manage_menu(request):
     if request.method == "GET":
         drink_menu = Drink.objects.all()
@@ -132,6 +137,7 @@ def manage_menu(request):
             drink_to_delete.delete()
         return HttpResponseRedirect(request.path_info)
 
+@login_required
 def scorecard(request):
     if request.method == "GET":
         scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today())
@@ -146,9 +152,12 @@ def scorecard(request):
     return HttpResponseRedirect(request.path_info)
             
 
+@login_required
 def leaderboard(request):
     return render(request, "PutPutApp/leaderboard.html")
 
+
+@login_required
 def manage_users(request):
     if request.method == "GET":
         users = Profile.objects.all()
