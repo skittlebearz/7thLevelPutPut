@@ -2,6 +2,19 @@
 ***
 CS3450 minigolf web app project
 
+## IMPORTANT MILESTONE 3 INFO!	
+Link to the folder containing:
+- Sprint Plannings
+- Sprint Retrospectives
+- Standup Reports
+- UI Manual testin write-ups
+
+https://drive.google.com/drive/folders/1fASbTWxiv4f2l7xVIIaKykqDxwlskrE8?usp=sharing
+
+After the project is build, you can run the following script that will run a handful of integrated unit tests:
+    
+    python manage.py test
+
 ## General Info
 ***
 This repository contains all the documentation and code for the 7thLevelPutPut app. The code will largely be written in python and follow PEP8 standards. 
@@ -143,7 +156,10 @@ Run server:
 
 ## Unit testing
 
-TBD unittesting?
+After the project is build, you can run the following script that will run a handful of integrated unit tests:
+    
+    python manage.py test
+
    
 ## System testing
 
