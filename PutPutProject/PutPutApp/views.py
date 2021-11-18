@@ -2,8 +2,9 @@ from django.contrib.auth import login
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from datetime import date
 
-from PutPutApp.forms import CustomUserCreationForm, AddDrinkForm, OrderForm, RemoveDrinkForm, ManageUserForm, SponsorForm
+from PutPutApp.forms import *
 from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest, User
 
 
