@@ -38,7 +38,36 @@ https://fontawesome.com/
 ## Build instructions
 Two options. One is a build script. The other is more manual in case the build script doesn't work.
 
-### Build Script Instructions
+### Windows Build Instructions
+Clone repository
+    git clone https://github.com/skittlebearz/7thLevelPutPut.git
+
+Enter newly cloned repository
+    cd 7thLevelPutPut
+
+Ensure python virutal environment is installed
+    pip install virtualenv
+
+Create virutal environment
+    virtualenv virtualputput
+    
+If using a linux/bash type shell
+    source virutalputput/Scripts/activate
+OR if using Powershell
+    .\virtualputput\Scripts\activate
+    
+Ensure all dependencies are installed/accessible to virutal environment    
+    pip install -r requirements.txt
+    
+Run the project migrate to initialize website
+    python PutPutProject/manage.py migrate
+    
+Start up the website
+    python PutPutProject/manage.py runserver
+    
+Now go to the starting point(dashboard) of the website http://127.0.0.1:8000/dashboard/
+
+### (Ubuntu) Build Script Instructions
 Clone GitHub repo and execute buildscript:
 
     git clone https://github.com/skittlebearz/7thLevelPutPut.git
@@ -47,7 +76,7 @@ Clone GitHub repo and execute buildscript:
     . putputvenv/bin/activate
     python3 PutPutProject/manage.py runserver
 
-### Manual Instructions
+### Manual Linux(Ubuntu) Instructions
 Clone GitHub repo:
 
     git clone https://github.com/skittlebearz/7thLevelPutPut.git
