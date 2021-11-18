@@ -5,7 +5,7 @@ from .models import Drink, Profile
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
-        fields = UserCreationForm.Meta.fields + ("email",)
+        fields = UserCreationForm.Meta.fields + ("email", "first_name", "last_name")
 
 class AddDrinkForm(forms.Form):
     name = forms.CharField(label="Drink name")

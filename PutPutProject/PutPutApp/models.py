@@ -5,7 +5,6 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type= models.CharField(max_length=1, default='P')
     account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
 
     def isManager(self):
@@ -16,14 +15,8 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.user) + " - " + self.user_type
       
-    # user_type= models.CharField(max_length=1)
-    firstname = models.CharField(max_length=30, default='default')
-    lastname = models.CharField(max_length=30, default='default')
     # TODO: check for users with same name. Maybe unique=True?
-    # username = models.CharField(user_firstname + " " + user_lastname)
 
-    UserTypes = models.TextChoices('User Type', 'Player Barkeep Sponsor Manager')
-    user_type = models.CharField(blank=True, choices=UserTypes.choices, max_length=30)
 
     # allow users to be multiple types simultaneously
     player = models.BooleanField(default=True) # default user type
@@ -31,7 +24,6 @@ class Profile(models.Model):
     sponsor = models.BooleanField(default=False) # admin approved by Manager
     manager = models.BooleanField(default=False) # a superuser
 
-    account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
 
     def get_firstname(self):
         return self.firstname
