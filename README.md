@@ -80,6 +80,8 @@ Start up the website
     
 Now go to the starting point(dashboard) of the website http://127.0.0.1:8000/dashboard/
 
+----------------------------------------------------------------
+
 ### (Ubuntu) Build Script Instructions
 Clone GitHub repo and execute buildscript:
 
@@ -88,6 +90,8 @@ Clone GitHub repo and execute buildscript:
     bash setup.sh <MySQL root password>
     . putputvenv/bin/activate
     python3 PutPutProject/manage.py runserver
+
+----------------------------------------------------------------
 
 ### Manual Linux(Ubuntu) Instructions
 Clone GitHub repo:
