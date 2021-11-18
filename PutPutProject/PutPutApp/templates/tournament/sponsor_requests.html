@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Sponser{% endblock %}
+{% block title %}Sponsor{% endblock %}
 
 {% block content %}
 <div class="container mt-5 pb-5">
   <div class="row">
     <div class="col-lg-8 order-2 order-lg-1 mb-3">
       <div class="mask">
-        <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">Schedule of <br />Events</h1>
+        <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">Sponsor <br />Requests</h1>
 
         {% for event in requests %}
 
@@ -31,6 +31,12 @@
 
             
 	{% endfor %} 
+
+	<br>
+	<br>
+	<br>
+	<br>
+        <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">List of Scheduled <br />Events</h1>
 
         {% for event in events %}
 

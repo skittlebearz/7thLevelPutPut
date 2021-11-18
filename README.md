@@ -8,6 +8,7 @@ Link to the folder containing:
 - Sprint Retrospectives
 - Standup Reports
 - UI Manual testin write-ups
+
 https://drive.google.com/drive/folders/1fASbTWxiv4f2l7xVIIaKykqDxwlskrE8?usp=sharing
 
 After the project is build, you can run the following script that will run a handful of integrated unit tests:
@@ -155,7 +156,10 @@ Run server:
 
 ## Unit testing
 
-TBD unittesting?
+After the project is build, you can run the following script that will run a handful of integrated unit tests:
+    
+    python manage.py test
+
    
 ## System testing
 
