@@ -7,13 +7,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_balance = models.DecimalField(decimal_places=2, max_digits=12, default=0)
 
-    def isManager(self):
-        if self.user_type == 'M':
-            return True
-        return False
-
-    def __str__(self):
-        return str(self.user) + " - " + self.user_type
+    #def __str__(self):
+    #    return str(self.user) + " - " + self.user_type
       
     # TODO: check for users with same name. Maybe unique=True?
 
@@ -24,9 +19,6 @@ class Profile(models.Model):
     sponsor = models.BooleanField(default=False) # admin approved by Manager
     manager = models.BooleanField(default=False) # a superuser
 
-
-    def get_firstname(self):
-        return self.firstname
 
     def get_balance(self):
         return self.account_balance
