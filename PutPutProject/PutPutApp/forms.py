@@ -53,3 +53,5 @@ class ManageUserForm(forms.Form):
 
     user_type = forms.ChoiceField(choices=CHOICES, widget=forms.CheckboxSelectMultiple, required=True)
 
+class DepositFundsForm(forms.Form):
+    amount = forms.DecimalField(label="Deposit Amount", max_digits=9, decimal_places=2)

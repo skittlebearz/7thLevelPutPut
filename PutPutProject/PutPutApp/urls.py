@@ -21,4 +21,5 @@ urlpatterns = [
     path("sponsor/", sponsor, name="sponsor"),
     path("managetournaments/", sponsor_requests, name="sponsor_requests"),
     path("managetournaments/<int:sponsor_request_id>", approve_tournament, name="approve_tournament"),
+    path("deposit/", deposit_funds, name="deposit_funds"),
 ]
