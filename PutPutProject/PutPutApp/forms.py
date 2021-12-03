@@ -51,5 +51,5 @@ class ManageUserForm(forms.Form):
     )
     CHOICES=[("Player","Player"), ("Manager","Manager"), ("Sponsor","Sponsor")]
 
-    user_type = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect, required=True)
+    user_type = forms.ChoiceField(choices=CHOICES, widget=forms.CheckboxSelectMultiple, required=True)
 

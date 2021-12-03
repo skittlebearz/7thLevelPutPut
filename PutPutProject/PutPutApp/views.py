@@ -171,22 +171,39 @@ def leaderboard(request):
 @login_required
 def manage_users(request):
     if request.method == "GET":
-        users = Profile.objects.all()
-        return render(request, 'manager/manage_users.html',
-                {
-                    "curUser":request.user,
-                    "users": users,
-                    "form":ManageUserForm,
-                }
-        )
+        users = Profile.objects.all().values('id', 'user__first_name', 'user__last_name', 'player', 'barkeep', 'sponsor', 'manager')
+        print(users)
+        return render(request, 'manager/manage_users.html', {"users": users})
     if request.method == "POST":
-        form = ManageUserForm(request.POST)
-        if form.is_valid():
-            user_id = request.POST['user']
-            user_type = request.POST['user_type']
-            user = get_object_or_404(Profile, pk=user_id)
-            user.user_type = user_type[0]
-            # print(user, user.user_type)
+        new_permissions = dict(request.POST) 
+        new_permissions.pop('csrfmiddlewaretoken')
+        for key, value in new_permissions.items():
+            user = Profile.objects.get(id=key)
+            user.manager = 'manager' in value
+            user.sponsor = 'sponsor' in value
+            user.barkeep = 'barkeep' in value
+            user.player  = 'player' in value
             user.save()
-            print(user.user_type)
         return HttpResponseRedirect(request.path_info)
+        
+    
+#    if request.method == "GET":
+#        users = Profile.objects.all()
+#        return render(request, 'manager/manage_users.html',
+#                {
+#                    "curUser":request.user,
+#                    "users": users,
+#                    "form":ManageUserForm,
+#                }
+#        )
+#    if request.method == "POST":
+#        form = ManageUserForm(request.POST)
+#        if form.is_valid():
+#            user_id = request.POST['user']
+#            user_type = request.POST['user_type']
+#            user = get_object_or_404(Profile, pk=user_id)
+#            user.user_type = user_type[0]
+#            # print(user, user.user_type)
+#            user.save()
+#            print(user.user_type)
+#        return HttpResponseRedirect(request.path_info)
