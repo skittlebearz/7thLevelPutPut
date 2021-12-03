@@ -33,6 +33,8 @@ def register(request):
 
 @login_required
 def menu(request):
+    if not request.user.profile.player:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
         drink_menu = Drink.objects.all()
         return render(
@@ -54,6 +56,8 @@ def menu(request):
 
 @login_required
 def orders(request):
+    if not request.user.profile.barkeep:
+        return HttpResponseRedirect('/dashboard')
     orders = Orders.objects.all()
     return render(
             request, "drinks/orders.html",
@@ -62,6 +66,8 @@ def orders(request):
 
 @login_required
 def fulfill_order(request, order_id):
+    if not request.user.profile.barkeep:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "POST":
         order = get_object_or_404(Orders, pk=order_id)
         order.delete()
@@ -69,6 +75,8 @@ def fulfill_order(request, order_id):
 
 @login_required
 def sponsor_requests(request):
+    if not request.user.profile.manager:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
         events = Calendar.objects.all()
         reservation_requests = SponsorRequest.objects.all()
@@ -79,6 +87,8 @@ def sponsor_requests(request):
 
 @login_required
 def approve_tournament(request, sponsor_request_id):
+    if not request.user.profile.manager:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "POST":
         reservation = get_object_or_404(SponsorRequest, pk=sponsor_request_id)
         if "Approve" in request.POST:
@@ -92,6 +102,8 @@ def approve_tournament(request, sponsor_request_id):
 
 @login_required
 def sponsor(request):
+    if not request.user.profile.sponsor:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "POST":
         form = SponsorForm(request.POST)
         if form.is_valid():
@@ -111,6 +123,8 @@ def sponsor(request):
 
 @login_required
 def manage_menu(request):
+    if not request.user.profile.manager:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
         drink_menu = Drink.objects.all()
         return render(request, 'drinks/manage_menu.html',
@@ -140,6 +154,8 @@ def manage_menu(request):
 
 @login_required
 def scorecard(request):
+    if not request.user.profile.player:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
         scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).order_by('hole').values('hole', 'num_strokes', 'par')
         total_score = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).aggregate(Sum('num_strokes'))['num_strokes__sum']
@@ -170,6 +186,8 @@ def leaderboard(request):
 
 @login_required
 def manage_users(request):
+    if not request.user.profile.manager:
+        return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
         users = Profile.objects.all().values('id', 'user__first_name', 'user__last_name', 'player', 'barkeep', 'sponsor', 'manager')
         print(users)
@@ -207,3 +225,5 @@ def manage_users(request):
 #            user.save()
 #            print(user.user_type)
 #        return HttpResponseRedirect(request.path_info)
+
+

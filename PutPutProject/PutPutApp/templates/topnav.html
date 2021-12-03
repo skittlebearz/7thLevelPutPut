@@ -11,6 +11,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Home</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
+          </li>
 	  {% if user.profile.player %}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'scorecard' %}">Scorecard</a>
@@ -19,23 +22,25 @@
             <!-- <a class="nav-link active" aria-current="page" href="{#% url 'tavern' %#}">Tavern</a> -->
             <a class="nav-link active" aria-current="page" href="{% url 'menu' %}">Tavern</a>
           </li>
+	  {% endif %}
+	  {% if user.profile.barkeep %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
-          </li>
+            <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
+	  {% endif %}
+	  {% if user.profile.sponsor %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'sponsor' %}">Schedule Event</a>
 	  {% endif %}
 	  {% if user.profile.manager %}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'manage_menu' %}">Manage Menu</a>
           </li>
-	  {% endif %}
-	  {% if user.profile.barkeep %}
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'orders' %}">Orders</a>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'sponsor_requests' %}">Manage Events</a>
-	    </li>
-            <a class="nav-link active" aria-current="page" href="{% url 'menu' %}">Tavern</a>
-          </li>
+	  </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'manage_users' %}">Manage Users</a>
+	  </li>
 	  {% endif %}
          <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{#% url 'course' %#}">Course</a>
@@ -119,7 +124,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item disabled" href="#">Manage Events</a></li>
+              <li><a class="dropdown-item" href="{% url 'sponsor' %}">Schedule Event</a></li>
               <!-- <li><a class="dropdown-item" href="#">Queue <NumItems></a></li> -->
               <li>
                 <hr class="dropdown-divider">
@@ -131,7 +136,9 @@
                 <hr class="dropdown-divider">
               </li>
               <li><a class="dropdown-item" href="{% url 'manage_menu' %}">Edit Drink Menu</a></li>
-	      <!-- <li><a class="dropdown-item" href="{# % url 'django.contrib.auth.urls' %#}">Manage Users</a></li> -->
+              <li><a class="dropdown-item" href="{% url 'manage_users' %}">Change User Permissions</a></li>
+              <li><a class="dropdown-item" href="{% url 'sponsor_requests' %}">Approve Tournaments</a></li>
+	      <!-- <li><a class="dropdown-item" href="">Manage Users</a></li> -->
               <li>
                 <hr class="dropdown-divider">
               </li>
