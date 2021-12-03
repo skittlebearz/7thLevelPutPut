@@ -149,34 +149,24 @@ def scorecard(request):
             holes.append({'hole' : i+1, 'num_strokes' : 0})
         for i in scores:
             holes[i['hole'] - 1] = i
-        return render(request, 'score/scorecard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
+        return render(request, 'score/scorecard.html', {'scores' : holes, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
     if request.method == "POST":
         form = ScorecardForm(request.POST)
         if form.is_valid():
             score = Score(day=date.today(), hole=request.POST['hole'], num_strokes=request.POST['num_strokes'])
             score.save()
             score.user.add(request.user)
+            score.save()
     return HttpResponseRedirect(request.path_info)
             
 
 @login_required
 def leaderboard(request):
     if request.method == "GET":
-        scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).order_by('hole').values('hole', 'num_strokes')
-        holes = []
-        print(scores)
-        for i in range(18):
-            holes.append({'hole' : i+1, 'num_strokes' : 0})
-        for i in scores:
-            print(i)
-            holes[i['hole'] - 1] = i
-        total_score = 0
-        total_par = 0
-        for i in holes:
-            i['par'] = i['num_strokes'] - 3 if i['num_strokes'] != 0 else 0
-            total_score += i['num_strokes']
-            total_par += i['par']
-        return render(request, 'score/leaderboard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
+        scores = Score.objects.filter(day__exact=date.today()).values('user').annotate(total_score=Sum('num_strokes'), total_par=Sum('par')).order_by('total_score').values('total_score', 'total_par', 'user__first_name', 'user__last_name')
+        for i in range(len(scores)):
+            scores[i]['count'] = i + 1
+        return render(request, 'score/leaderboard.html', {'leaderboard' : scores})
 
 @login_required
 def manage_users(request):
