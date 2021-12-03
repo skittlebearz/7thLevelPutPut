@@ -178,6 +178,8 @@ def scorecard(request):
 
 @login_required
 def leaderboard(request):
+    if not user.is_authenticated:
+        return HttpResponseRedirect('/login')
     if request.method == "GET":
         scores = Score.objects.filter(day__exact=date.today()).values('user').annotate(total_score=Sum('num_strokes'), total_par=Sum('par')).order_by('total_score').values('total_score', 'total_par', 'user__first_name', 'user__last_name')
         for i in range(len(scores)):
@@ -225,5 +227,18 @@ def manage_users(request):
 #            user.save()
 #            print(user.user_type)
 #        return HttpResponseRedirect(request.path_info)
+
+def deposit_funds(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login')
+    if request.method == "GET":
+        return render(request, 'PutPutApp/deposit.html', {'form' : DepositFundsForm})
+    if request.method == "POST":
+        form = DepositFundsForm(request.POST)
+        if form.is_valid():
+            prof = Profile.objects.get(user=request.user)
+            prof.account_balance = float(prof.account_balance) + float(request.POST['amount'])
+            prof.save()
+    return HttpResponseRedirect(request.path_info)
 
 
