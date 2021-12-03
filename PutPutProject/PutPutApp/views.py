@@ -140,8 +140,18 @@ def manage_menu(request):
 @login_required
 def scorecard(request):
     if request.method == "GET":
-        scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today())
-        return render(request, 'score/scorecard.html', {'scores' : scores, 'form': ScorecardForm})
+        scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).order_by('hole').values('hole', 'num_strokes')
+        holes = []
+        print(scores)
+        for i in range(18):
+            holes.append({'hole' : i+1, 'num_strokes' : 0})
+        for i in scores:
+            print(i)
+            holes[i['hole'] - 1] = i
+        total_score = 0
+        for i in holes:
+            total_score += i['num_strokes']
+        return render(request, 'score/scorecard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score})
     if request.method == "POST":
         form = ScorecardForm(request.POST)
         if form.is_valid():
