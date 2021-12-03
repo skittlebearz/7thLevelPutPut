@@ -149,9 +149,12 @@ def scorecard(request):
             print(i)
             holes[i['hole'] - 1] = i
         total_score = 0
+        total_par = 0
         for i in holes:
+            i['par'] = i['num_strokes'] - 3 if i['num_strokes'] != 0 else 0
             total_score += i['num_strokes']
-        return render(request, 'score/scorecard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score})
+            total_par += i['par']
+        return render(request, 'score/scorecard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
     if request.method == "POST":
         form = ScorecardForm(request.POST)
         if form.is_valid():

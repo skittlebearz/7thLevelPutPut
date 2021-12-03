@@ -16,7 +16,7 @@
 
                 <div class=" text-center">
                 <h1 class="medieval display-1 fw-bold">Scorecard</h1>
-		<h2 class="mb-5">Total: {{ total_score }}</h2>
+		<h2 class="mb-5">Total: {{ total_score }} ({{ total_par }})</h2>
 
                     <div class="row">
 
@@ -31,6 +31,7 @@
 							</span>
 							<div class="card-body">
 								<h2 class="h5 card-title">{{ score.num_strokes }}</h2>
+								<p class="card-text text-muted">{{ score.par }}</p>
 							</div>
 
 						</div>
