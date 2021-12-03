@@ -44,6 +44,10 @@ class Score(models.Model):
     day = models.DateField()
     num_strokes = models.IntegerField()
     hole = models.IntegerField()
+    par = models.IntegerField()
+    def save(self, *args, **kwargs):
+        self.par = self.num_strokes - 3
+        super(Score, self).save(*args, **kwargs)
 
 class Drink(models.Model):
     # TODO: get username from Profile

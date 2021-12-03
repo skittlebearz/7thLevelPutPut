@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from datetime import date
+from django.db.models import Sum
 
 from PutPutApp.forms import *
 from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest, User
@@ -140,6 +141,27 @@ def manage_menu(request):
 @login_required
 def scorecard(request):
     if request.method == "GET":
+        scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).order_by('hole').values('hole', 'num_strokes', 'par')
+        total_score = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).aggregate(Sum('num_strokes'))['num_strokes__sum']
+        total_par = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).aggregate(Sum('par'))['par__sum']
+        holes = []
+        for i in range(18):
+            holes.append({'hole' : i+1, 'num_strokes' : 0})
+        for i in scores:
+            holes[i['hole'] - 1] = i
+        return render(request, 'score/scorecard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
+    if request.method == "POST":
+        form = ScorecardForm(request.POST)
+        if form.is_valid():
+            score = Score(day=date.today(), hole=request.POST['hole'], num_strokes=request.POST['num_strokes'])
+            score.save()
+            score.user.add(request.user)
+    return HttpResponseRedirect(request.path_info)
+            
+
+@login_required
+def leaderboard(request):
+    if request.method == "GET":
         scores = Score.objects.filter(user__exact=request.user).filter(day__exact=date.today()).order_by('hole').values('hole', 'num_strokes')
         holes = []
         print(scores)
@@ -154,21 +176,7 @@ def scorecard(request):
             i['par'] = i['num_strokes'] - 3 if i['num_strokes'] != 0 else 0
             total_score += i['num_strokes']
             total_par += i['par']
-        return render(request, 'score/scorecard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
-    if request.method == "POST":
-        form = ScorecardForm(request.POST)
-        if form.is_valid():
-
-            score = Score(day=date.today(), hole=request.POST['hole'], num_strokes=request.POST['num_strokes'])
-            score.save()
-            score.user.add(request.user)
-    return HttpResponseRedirect(request.path_info)
-            
-
-@login_required
-def leaderboard(request):
-    return render(request, "PutPutApp/leaderboard.html")
-
+        return render(request, 'score/leaderboard.html', {'scores' : holes, 'form': ScorecardForm, 'form' : ScorecardForm, 'total_score' : total_score, 'total_par' : total_par})
 
 @login_required
 def manage_users(request):
