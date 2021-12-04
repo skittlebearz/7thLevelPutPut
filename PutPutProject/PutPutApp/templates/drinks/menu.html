@@ -6,10 +6,32 @@
 
 {% block content %}
 <div class="container mt-5 pb-5">
+
+				{% if order_placed %}
 	<div class="row">
 		<div class="col-lg-8">
 			<div class="mask">
-				<!-- <h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Ye Olde <br />19<sup>th</sup> Hole</h1> -->
+					<div>
+						<h3> Thank you for your order!</h3>
+				            </div>
+			</div>
+		</div>
+	</div>
+					{% endif %}
+
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="mask">
+	
+					{% if error %}
+				            <div class="alert alert-danger">
+				                <strong>{{ error|escape }}</strong>
+						<br>
+						<a href="/deposit/">Manage Wallet</a>
+				            </div>
+					{% endif %}
+
+			<!-- <h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Ye Olde <br />19<sup>th</sup> Hole</h1> -->
 
 				<h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Mulligan's <br />Tavern</h1>
 				<!-- <hr /> -->
@@ -44,6 +66,13 @@
 
 				{#% if user.is_authenticated %#}
 				{#% if user.is_player %#}
+				{% if error %}
+				            <div class="alert alert-danger">
+				                <strong>{{ error|escape }}</strong>
+						<br>
+						<a href="/deposit/">Manage Wallet</a>
+				            </div>
+				{% endif %}
 
 				<!-- TODO: integrate order form -->
 				<h2 class="h1">Order A Drink</h2>

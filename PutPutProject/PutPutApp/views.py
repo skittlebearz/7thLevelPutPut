@@ -45,15 +45,32 @@ def menu(request):
                 )
     elif request.method == "POST":
         form = OrderForm(request.POST)
+        drink_menu = Drink.objects.all()
         if form.is_valid():
-            new_order = Orders()
-            new_order.name = request.POST['name']
-            new_order.location = request.POST['location']
+            prof = Profile.objects.get(user=request.user)
             drink_id = request.POST['drink']
-            new_order.drink = get_object_or_404(Drink, pk=drink_id)
-            new_order.save()
-        return render(request, 'drinks/menu.html')
+            drink = get_object_or_404(Drink, pk=drink_id)
+            if float(prof.account_balance) >= float(drink.cost):
+                prof.account_balance = float(prof.account_balance) - float(drink.cost)
+                new_order = Orders()
+                new_order.name = request.user.first_name
+                new_order.location = request.POST['location']
+                new_order.drink = drink.name
+                new_order.save()
+                prof.save()
+                return render(
+                        request, "drinks/menu.html",
+                        {"drink_menu": drink_menu,
+                            "form": OrderForm,
+                            "order_placed" : "order_placed"})
+            else:
+                return render(
+                        request, "drinks/menu.html",
+                        {"drink_menu": drink_menu,
+                            "form": OrderForm,
+                            "error" : "insufficient funds"})
 
+ 
 @login_required
 def orders(request):
     if not request.user.profile.barkeep:

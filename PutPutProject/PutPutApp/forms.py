@@ -15,7 +15,6 @@ class AddDrinkForm(forms.Form):
 
 class OrderForm(forms.Form):
     menu = Drink.objects.all()
-    name = forms.CharField(max_length=30)
     drink = forms.ModelChoiceField(
             queryset=menu,
             required=True,
