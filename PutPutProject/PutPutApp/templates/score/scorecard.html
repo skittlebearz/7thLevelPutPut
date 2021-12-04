@@ -3,45 +3,42 @@
 {% block title %}Scorecard | {% endblock %}
 
 {% block content %}
-
-<div class="container mt-5 pb-5">
+{% load static %}
+<div class="container pb-5">
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
-		    <form method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit">
-		    </form>
-
                 <div class=" text-center">
-                <h1 class="medieval display-1 fw-bold">Scorecard</h1>
-		<h2 class="mb-5">Total: {{ total_score }} ({{ total_par }})</h2>
-
+                    <h1 class="display-1 fw-bold">Scorecard</h1>
+                    <h2 class="mb-5 display-5 fw-bold">Total: {{ total_score }} (<span class="text-muted" style="cursor:pointer;" title="Score To Par">{{ total_par }}</span>)</h2>
                     <div class="row">
-
-
-{% for score in scores %}
-
+                        {% for score in scores %}
                         <div class="col m-lg-3 my-3">
-
                             <div class="card h-100">
 							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
 								Hole {{ score.hole }} 
 							</span>
-							<div class="card-body">
-								<h2 class="h5 card-title">{{ score.num_strokes }}</h2>
-								<p class="card-text text-muted">{{ score.par }}</p>
-							</div>
-
-						</div>
-
+                                <div class="card-body">
+                                    <p class="h5 card-title">{{ score.num_strokes }}</p>
+                                    <p class="card-text text-muted">{{ score.par }}</p>
+                                </div>
+                            </div>
                         </div>
-{% endfor %}
-
+                        {% endfor %}
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-4 ">
+            <div class="mask">
+                <h2 class="fw-bold display-5 text-center">Update Score</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit">
+                </form>
+            </div>
+            <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/royalty.svg' %}" alt="medieval royalty">
         </div>
     </div>
 </div>
