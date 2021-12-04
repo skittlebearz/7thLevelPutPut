@@ -30,6 +30,12 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect(reverse("dashboard"))
+        else:
+            events = Calendar.objects.all()
+            return render(request,'PutPutApp/register.html',
+                {"form": CustomUserCreationForm,
+                 "events": events,
+                 "error": "error"})
 
 @login_required
 def menu(request):

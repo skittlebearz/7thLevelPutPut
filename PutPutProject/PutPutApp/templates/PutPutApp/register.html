@@ -4,6 +4,23 @@
 
 {% block content %}
 <div class="container mt-5 pb-5">
+{% if error %}
+	<div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                                <br>
+						<p>Sorry! Something went wrong</p>
+						<p>We think we know the problem</p>
+						<p>Try again using a less common password</p>
+                                            </div>
+			</div>
+		</div>
+	</div>
+                                        {% endif %}
+
+
     <div class="row">
         <div class="col-lg-8 order-2 order-lg-1 mb-3">
             <div class="mask">
