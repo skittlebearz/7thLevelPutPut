@@ -18,20 +18,19 @@
         </div>
                                         {% endif %}
 
+                                        {% if error %}
         <div class="row">
                 <div class="col-lg-8">
                         <div class="mask">
-
-                                        {% if error %}
                                             <div class="alert alert-danger">
                                                 <strong>{{ error|escape }}</strong>
                                                 <br>
                                                 <a href="/deposit/">Manage Wallet</a>
                                             </div>
-                                        {% endif %}
 			</div>
 		</div>
 	</div>
+                                        {% endif %}
 
     <div class="row">
         <div class="col-lg-8">
@@ -72,20 +71,19 @@
         </div>
                                         {% endif %}
 
+                                        {% if error %}
         <div class="row">
                 <div class="col-lg-8">
                         <div class="mask">
-
-                                        {% if error %}
                                             <div class="alert alert-danger">
                                                 <strong>{{ error|escape }}</strong>
                                                 <br>
                                                 <a href="/deposit/">Manage Wallet</a>
                                             </div>
-                                        {% endif %}
 			</div>
 		</div>
 	</div>
+                                        {% endif %}
 
                 <!-- TODO: integrate order form -->
                 <h2 class="fw-bold display-5 text-center">Order A Drink</h2>
