@@ -178,7 +178,7 @@ def scorecard(request):
 
 @login_required
 def leaderboard(request):
-    if not user.is_authenticated:
+    if not request.user.is_authenticated:
         return HttpResponseRedirect('/login')
     if request.method == "GET":
         scores = Score.objects.filter(day__exact=date.today()).values('user').annotate(total_score=Sum('num_strokes'), total_par=Sum('par')).order_by('total_score').values('total_score', 'total_par', 'user__first_name', 'user__last_name')
