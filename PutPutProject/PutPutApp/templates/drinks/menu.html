@@ -3,105 +3,115 @@
 
 
 {% block title %}Menu | Tavern | {% endblock %}
-
 {% block content %}
-<div class="container mt-5 pb-5">
 
-				{% if order_placed %}
-	<div class="row">
-		<div class="col-lg-8">
-			<div class="mask">
-					<div>
-						<h3> Thank you for your order!</h3>
-				            </div>
+<div class="container pb-5">
+                                {% if order_placed %}
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                        <div>
+                                                <h3> Thank you for your order!</h3>
+                                            </div>
+                        </div>
+                </div>
+        </div>
+                                        {% endif %}
+
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+
+                                        {% if error %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                                <br>
+                                                <a href="/deposit/">Manage Wallet</a>
+                                            </div>
+                                        {% endif %}
 			</div>
 		</div>
 	</div>
-					{% endif %}
 
-	<div class="row">
-		<div class="col-lg-8">
-			<div class="mask">
-	
-					{% if error %}
-				            <div class="alert alert-danger">
-				                <strong>{{ error|escape }}</strong>
-						<br>
-						<a href="/deposit/">Manage Wallet</a>
-				            </div>
-					{% endif %}
-
-			<!-- <h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Ye Olde <br />19<sup>th</sup> Hole</h1> -->
-
-				<h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Mulligan's <br />Tavern</h1>
-				<!-- <hr /> -->
-				<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
-
-					<!-- TODO: make menu dynamic -->
-					{% for drink in drink_menu %}
-
-					<div class="col">
-						<div class="card h-100">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="mask">
+                <h1 class="py-3 fw-bold text-center display-1 text-uppercase">Mulligan's <br/>Tavern</h1>
+                <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+                    {% for drink in drink_menu %}
+                    <div class="col">
+                        <div class="card h-100">
 							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
 								${{ drink.cost }}
 								<span class="visually-hidden">cost</span>
 							</span>
-							<div class="card-body">
-								<h2 class="h5 card-title">{{ drink.name }}</h2>
-								<p class="card-text">{{ drink.description}}</p>
-							</div>
+                           <div class="card-body">
+                                <h3 class="h5 card-title">{{ drink.name }}</h3>
+                                <p class="card-text">{{ drink.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2">
+            <div class="mask">
+                {#% if user.is_authenticated %#}
+                {#% if user.is_player %#}
 
-						</div>
-					</div>
+                                {% if order_placed %}
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                        <div>
+                                                <h3> Thank you for your order!</h3>
+                                            </div>
+                        </div>
+                </div>
+        </div>
+                                        {% endif %}
 
-					{% endfor %}
-				</div>
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+
+                                        {% if error %}
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                                <br>
+                                                <a href="/deposit/">Manage Wallet</a>
+                                            </div>
+                                        {% endif %}
 			</div>
-		</div>
-
-
-		<div class="col-lg-4 order-1 order-lg-2">
-			<div class="mask">
-
-
-				{#% if user.is_authenticated %#}
-				{#% if user.is_player %#}
-				{% if error %}
-				            <div class="alert alert-danger">
-				                <strong>{{ error|escape }}</strong>
-						<br>
-						<a href="/deposit/">Manage Wallet</a>
-				            </div>
-				{% endif %}
-
-				<!-- TODO: integrate order form -->
-				<h2 class="h1">Order A Drink</h2>
-				<form action="/menu/" method="post">
-					{% csrf_token %}
-					{{ form }}
-					<input value="Order Drink" input type="submit">
-				</form>
-
-
-				<!-- <button class="btn px-5 btn-primary border-2 btn-lg mx-auto shadow w-100" href="#" target="_blank" role="button">Order</button> -->
-				{#{ else if user.is_barkeep }#}
-				<!-- TODO: display queue, make interactive and dynamic -->
-
-
-				{#{ else if user.is_manager }#}
-				<!-- TODO: display menu edit controls -->
-
-				{#{ else }#}
-				<!-- TODO: prompt user to login -->
-
-				{#% endif %#}
-				{#% endif %#}
-
-
-				<!-- <div class="arrow-down mx-auto d-none d-lg-block"></div> -->
-			</div>
-
 		</div>
 	</div>
+
+                <!-- TODO: integrate order form -->
+                <h2 class="fw-bold display-5 text-center">Order A Drink</h2>
+                <form action="/menu/" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input value="Order Drink" input type="submit">
+                </form>
+
+                <!-- <button class="btn px-5 btn-primary border-2 btn-lg mx-auto shadow w-100" href="#" target="_blank" role="button">Order</button> -->
+                {#{ else if user.is_barkeep }#}
+                <!-- TODO: display queue, make interactive and dynamic -->
+
+                {#{ else if user.is_manager }#}
+                <!-- TODO: display menu edit controls -->
+
+                {#{ else }#}
+                <!-- TODO: prompt user to login -->
+
+                {#% endif %#}
+                {#% endif %#}
+
+                <!-- <div class="arrow-down mx-auto d-none d-lg-block"></div> -->
+            </div>
+            <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/tavern.svg' %}" alt="medieval tavern">
+        </div>
+    </div>
 </div>
 {% endblock %}
