@@ -50,7 +50,6 @@ class Score(models.Model):
         super(Score, self).save(*args, **kwargs)
 
 class Drink(models.Model):
-    # TODO: get username from Profile
     name = models.CharField(max_length=30)
     cost = models.DecimalField(decimal_places=2, max_digits=6)
     description = models.CharField(max_length=240)
@@ -59,7 +58,6 @@ class Drink(models.Model):
         return self.name
 
 class Orders(models.Model):
-    # TODO: get username from Profile
     name = models.CharField(max_length=30)
     drink = models.CharField(max_length=240)
     location = models.PositiveIntegerField()

@@ -35,3 +35,16 @@ h2 {
   transform: scale(1.05);
   box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
+
+#ball {
+    animation: ball 1s ease infinite;
+}
+
+@keyframes ball {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}

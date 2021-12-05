@@ -1,26 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Login | {% endblock %}
 
 {% block content %}
 
 <div class="container mt-5 pb-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="mask">
-        <h1 class="mb-3 display-1 fw-bold text-uppercase">Login</h1>
-        <form method="post">
-          <!-- This is a basic placeholder login form -->
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" value="Login">
-        </form>
-        <br>
-        <a class="btn btn-primary border-2 btn-lg shadow m-3" href="{% url 'register' %}" role="button">Register</a>
-        <a class="btn btn-primary border-2 btn-lg shadow m-3" href="{% url 'dashboard' %}" role="button">Home</a>
-      </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="mask">
+                <h1 class="mb-3 display-1 fw-bold text-uppercase text-center">Login</h1>
+                <form method="post">
+                    <!-- This is a basic placeholder login form -->
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-primary shadow btn-lg" type="submit">Login</button>
+                </form>
+                <a class="btn btn-outline-primary border-2 btn-lg mt-3" href="{% url 'register' %}"
+                   role="button">New User</a>
+            </div>
+        </div>
+        <div class="col-lg-4 d-flex align-items-end justify-content-center">
+            <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/knight-and-lady.svg' %}"
+                 alt="medieval knight and lady">
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}
