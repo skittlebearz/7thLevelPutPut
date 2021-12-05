@@ -17,7 +17,7 @@ class AddDrinkForm(forms.Form):
 
 class OrderForm(forms.Form):
     menu = Drink.objects.order_by('name')
-    name = forms.CharField(max_length=30, required=True)
+    #name = forms.CharField(max_length=30, required=True)
     location = forms.IntegerField(label="Hole Number", validators=[MinValueValidator(1), MaxValueValidator(18)],
                                   required=True)
     drink = forms.ModelChoiceField(

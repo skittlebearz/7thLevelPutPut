@@ -101,7 +101,7 @@ Start up the website
 
     python PutPutProject/manage.py runserver
     
-Now go to the starting point(dashboard) of the website http://127.0.0.1:8000/dashboard/
+Now go to the starting point(dashboard) of the website http://127.0.0.1:8000
 
 ----------------------------------------------------------------
 
@@ -166,7 +166,7 @@ Run server:
 
 ## Unit testing
 
-After the project is build, you can run the following script that will run a handful of integrated unit tests:
+After the project is built, you can run the following script that will run a handful of integrated unit tests:
     
     python manage.py test
 
