@@ -3,13 +3,13 @@
 CS3450 minigolf web app project
 
 ## IMPORTANT MILESTONE 4 INFO!	
-LOGIN INFORMATION FOR DEFAULT TEST USERS:
-USERTYPE-  username : password
-MASTER_TEST_USER- testmaster : gotest123
-PLAYER- playertest : gotest123
-BARKEEP- barkeeptest : gotest123
-SPONSOR- sponsortest : gotest123
-MANGER- managertest : gotest123
+### LOGIN INFORMATION FOR DEFAULT TEST USERS:
+### USERTYPE-  username : password
+- MASTER_TEST_USER- testmaster : gotest123
+- PLAYER- playertest : gotest123
+- BARKEEP- barkeeptest : gotest123
+- SPONSOR- sponsortest : gotest123
+- MANGER- managertest : gotest123
 
 
 After the project is built following the build instructions below, you can run the following script that will run a handful of integrated unit tests:
@@ -57,8 +57,6 @@ https://www.mysql.com/
 Bootstrap - Mobile-first frontend framework  
 https://getbootstrap.com/
 
-Font Awesome - Popular font and icon toolkit  
-https://fontawesome.com/
 
 ## Build instructions
 Three options. One is for windows(Reccomended, less database setup), one is a build script (ubuntu). The other is more manual in case the build script doesn't work(ubuntu).
