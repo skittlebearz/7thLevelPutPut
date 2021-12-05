@@ -29,6 +29,12 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect(reverse("dashboard"))
+        else:
+            events = Calendar.objects.all()
+            return render(request,'PutPutApp/register.html',
+                {"form": CustomUserCreationForm,
+                 "events": events,
+                 "error": "error"})
 
 @login_required
 def menu(request):
@@ -48,15 +54,33 @@ def menu(request):
             "name":User.first_name,
         }
         form = OrderForm(request.POST or None, initial=initial_dict)
-        if form.is_valid():
-            new_order = Orders()
-            new_order.name = request.POST['name']
-            new_order.location = request.POST['location']
-            drink_id = request.POST['drink']
-            new_order.drink = get_object_or_404(Drink, pk=drink_id)
-            new_order.save()
-        return render(request, 'drinks/menu.html')
+        drink_menu = Drink.objects.all()
 
+        if form.is_valid():
+            prof = Profile.objects.get(user=request.user)
+            drink_id = request.POST['drink']
+            drink = get_object_or_404(Drink, pk=drink_id)
+            if float(prof.account_balance) >= float(drink.cost):
+                prof.account_balance = float(prof.account_balance) - float(drink.cost)
+                new_order = Orders()
+                new_order.name = request.user.first_name
+                new_order.location = request.POST['location']
+                new_order.drink = drink.name
+                new_order.save()
+                prof.save()
+                return render(
+                        request, "drinks/menu.html",
+                        {"drink_menu": drink_menu,
+                            "form": OrderForm,
+                            "order_placed" : "order_placed"})
+            else:
+                return render(
+                        request, "drinks/menu.html",
+                        {"drink_menu": drink_menu,
+                            "form": OrderForm,
+                            "error" : "insufficient funds"})
+
+ 
 @login_required
 def orders(request):
     if not request.user.profile.barkeep:

@@ -2,6 +2,22 @@
 ***
 CS3450 minigolf web app project
 
+## IMPORTANT MILESTONE 4 INFO!	
+LOGIN INFORMATION FOR DEFAULT TEST USERS:
+USERTYPE-  username : password
+MASTER_TEST_USER- testmaster : gotest123
+PLAYER- playertest : gotest123
+BARKEEP- barkeeptest : gotest123
+SPONSOR- sponsortest : gotest123
+MANGER- managertest : gotest123
+
+
+After the project is built following the build instructions below, you can run the following script that will run a handful of integrated unit tests:
+    
+    python manage.py test
+
+
+
 ## IMPORTANT MILESTONE 3 INFO!	
 Link to the folder containing:
 - Sprint Plannings
@@ -10,10 +26,6 @@ Link to the folder containing:
 - UI Manual testin write-ups
 
 https://drive.google.com/drive/folders/1fASbTWxiv4f2l7xVIIaKykqDxwlskrE8?usp=sharing
-
-After the project is build, you can run the following script that will run a handful of integrated unit tests:
-    
-    python manage.py test
 
 ## General Info
 ***

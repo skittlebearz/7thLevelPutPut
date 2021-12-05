@@ -3,9 +3,35 @@
 {% load crispy_forms_tags %}
 
 {% block title %}Menu | Tavern | {% endblock %}
-
 {% block content %}
+
 <div class="container pb-5">
+                                {% if order_placed %}
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                        <div>
+                                                <h3> Thank you for your order!</h3>
+                                            </div>
+                        </div>
+                </div>
+        </div>
+                                        {% endif %}
+
+                                        {% if error %}
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                                <br>
+                                                <a href="/deposit/">Manage Wallet</a>
+                                            </div>
+			</div>
+		</div>
+	</div>
+                                        {% endif %}
+
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
@@ -18,7 +44,7 @@
 								${{ drink.cost }}
 								<span class="visually-hidden">cost</span>
 							</span>
-                            <div class="card-body">
+                           <div class="card-body">
                                 <h3 class="h5 card-title">{{ drink.name }}</h3>
                                 <p class="card-text">{{ drink.description}}</p>
                             </div>
@@ -32,6 +58,32 @@
             <div class="mask">
                 {#% if user.is_authenticated %#}
                 {#% if user.is_player %#}
+
+                                {% if order_placed %}
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                        <div>
+                                                <h3> Thank you for your order!</h3>
+                                            </div>
+                        </div>
+                </div>
+        </div>
+                                        {% endif %}
+
+                                        {% if error %}
+        <div class="row">
+                <div class="col-lg-8">
+                        <div class="mask">
+                                            <div class="alert alert-danger">
+                                                <strong>{{ error|escape }}</strong>
+                                                <br>
+                                                <a href="/deposit/">Manage Wallet</a>
+                                            </div>
+			</div>
+		</div>
+	</div>
+                                        {% endif %}
 
                 <!-- TODO: integrate order form -->
                 <h2 class="fw-bold display-5 text-center">Order A Drink</h2>

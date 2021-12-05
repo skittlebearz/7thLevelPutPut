@@ -1,4 +1,3 @@
-
 from django.db import migrations
 from django.utils import timezone
 import datetime
@@ -9,7 +8,86 @@ def populate_db(apps,schema_editor):
     Orders = apps.get_model('PutPutApp', 'Orders')
     SponsorRequest = apps.get_model('PutPutApp', 'SponsorRequest')
     Calendar = apps.get_model('PutPutApp', 'Calendar')
+    Profile = apps.get_model('PutPutApp', 'Profile')
+    User = apps.get_model('auth', 'User')
 
+
+    #TEST USER ALL PERMISSIONS
+    master_test_user = User.objects.create_user('testmaster', 'test@test.com', 'gotest123')
+    master_test_user.first_name = 'testmaster'
+    master_test_user.last_name = 'testman'
+    master_test_user.save()
+
+    master_testprofile = Profile.objects.create(
+            user=master_test_user,
+            account_balance=3,
+            player=True,
+            barkeep=True,
+            sponsor=True,
+            manager=True) 
+    master_testprofile.save()
+
+
+    #PLAYER TEST USER
+    player_test_user = User.objects.create_user('playertest', 'test@test.com', 'gotest123')
+    player_test_user.first_name = 'playertest'
+    player_test_user.last_name = 'testman'
+    player_test_user.save()
+
+    player_testprofile = Profile.objects.create(
+            user=player_test_user,
+            account_balance=3,
+            player=True,
+            barkeep=False,
+            sponsor=False,
+            manager=False) 
+    player_testprofile.save()
+
+
+    #BARKEEP TEST USER
+    barkeep_test_user = User.objects.create_user('barkeeptest', 'test@test.com', 'gotest123')
+    barkeep_test_user.first_name = 'barkeeptest'
+    barkeep_test_user.last_name = 'testman'
+    barkeep_test_user.save()
+
+    barkeep_testprofile = Profile.objects.create(
+            user=barkeep_test_user,
+            account_balance=3,
+            player=True,
+            barkeep=True,
+            sponsor=False,
+            manager=False) 
+    barkeep_testprofile.save()
+
+    #SPONSOR TEST USER
+    sponsor_test_user = User.objects.create_user('sponsortest', 'test@test.com', 'gotest123')
+    sponsor_test_user.first_name = 'sponsortest'
+    sponsor_test_user.last_name = 'testman'
+    sponsor_test_user.save()
+
+    sponsor_testprofile = Profile.objects.create(
+            user=sponsor_test_user,
+            account_balance=3,
+            player=True,
+            barkeep=True,
+            sponsor=True,
+            manager=False) 
+    sponsor_testprofile.save()
+
+    #MANAGER TEST USER
+    manager_test_user = User.objects.create_user('managertest', 'test@test.com', 'gotest123')
+    manager_test_user.first_name = 'managertest'
+    manager_test_user.last_name = 'testman'
+    manager_test_user.save()
+
+    manager_testprofile = Profile.objects.create(
+            user=manager_test_user,
+            account_balance=3,
+            player=True,
+            barkeep=True,
+            sponsor=True,
+            manager=True) 
+    manager_testprofile.save()
 
     drink_a = Drink(
             name="Dirty Diet Coke",
