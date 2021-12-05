@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 {% block title %}Menu | Tavern | {% endblock %}
 {% block content %}
@@ -89,8 +89,8 @@
                 <h2 class="fw-bold display-5 text-center">Order A Drink</h2>
                 <form action="/menu/" method="post">
                     {% csrf_token %}
-                    {{ form }}
-                    <input value="Order Drink" input type="submit">
+                    {{ form|crispy }}
+                    <button class="btn btn-primary btn-lg shadow" type="submit">Place Order</button>
                 </form>
 
                 <!-- <button class="btn px-5 btn-primary border-2 btn-lg mx-auto shadow w-100" href="#" target="_blank" role="button">Order</button> -->

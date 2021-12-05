@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light sticky-top fw-bold" style="">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top fw-bold p-0" style="">
 
     <div class="container">
         <!-- TODO: update image - Temporary Logo -->
@@ -14,10 +14,10 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Home</a>
                 </li>
+                {% if user.profile.player %}
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
                 </li>
-                {% if user.profile.player %}
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'scorecard' %}">Scorecard</a>
                 </li>
@@ -57,7 +57,7 @@
                 <li class="nav-item dropdown bg-none ms-auto">
                     <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Welcome, {{ user.first_name }}
+                        Welcome, {{ user.first_name }} {{ player.total_score }}
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -69,7 +69,7 @@
                         <li><a class="dropdown-item" href="{% url 'deposit_funds' %}">
                             <div class="d-flex flex-row justify-content-between disabled">
                                 <div>
-                                    <p class="p-0 m-0">Wallet</p>
+                                    <p class="p-0 m-0">Purse</p>
                                 </div>
                                 <div><span class="badge text-right rounded-pill bg-warning">${{ user.profile.account_balance }}</span>
                                 </div>
@@ -113,7 +113,8 @@
                                     <!-- <i class="fas fa-trophy"></i> -->
                                     <p class="p-0 m-0">Queue</p>
                                 </div>
-                                <div><span class="badge text-right rounded-pill bg-warning">#</span></div>
+                                <div><span class="badge text-right rounded-pill bg-warning">{{ num_queue_items }}</span>
+                                </div>
                             </div>
                         </a>
                         </li>
@@ -144,13 +145,12 @@
                             <hr class="dropdown-divider">
                         </li>
                         {% endif %}
-<!--                        <li><a class="dropdown-item disabled" href="#">Account</a></li>-->
+                        <!--                        <li><a class="dropdown-item disabled" href="#">Account</a></li>-->
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                     </ul>
                 </li>
                 {% else %}
                 <li><a class="btn btn-outline-primary px-4 shadow border-2" href="{% url 'login' %}">Login</a></li>
-                <li><a class="btn btn-outline-primary px-4 shadow border-2" href="{% url 'register' %}">Register</a>
                 </li>
                 {% endif %}
             </ul>
