@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Register | {% endblock %}
 
 {% block content %}
-<div class="container mt-5 pb-5">
+<div class="container pb-5">
     <div class="row">
         <div class="col-lg-8 order-2 order-lg-1 mb-3">
             <div class="mask">
@@ -29,10 +31,21 @@
                 <!-- Registration form -->
                 <form method="post">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Register">
+                    <div class="row">
+                        <div class="col-6">
+                            {{ form.first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-6">
+                            {{ form.last_name|as_crispy_field }}
+                        </div>
+                        {{ form.username|as_crispy_field }}
+                        {{ form.email|as_crispy_field }}
+                        {{ form.password1|as_crispy_field }}
+                        {{ form.password2|as_crispy_field }}
+                    </div>
+                    <button class="btn btn-primary shadow btn-lg" type="submit">Register</button>
                 </form>
-                <a class="btn btn-primary shadow mt-5 text-center" href="{% url 'login' %}" role="button">Returning
+                <a class="btn btn-lg btn-outline-primary mt-3 text-center" href="{% url 'login' %}" role="button">Returning
                     User</a>
             </div>
         </div>

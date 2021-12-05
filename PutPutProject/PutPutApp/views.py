@@ -9,7 +9,6 @@ from django.db.models import Sum
 from PutPutApp.forms import *
 from .models import Drink, Orders, Profile, Score, Calendar, SponsorRequest, User
 
-@login_required
 def dashboard(request):
     return render(request, "PutPutApp/dashboard.html")
 
@@ -18,7 +17,7 @@ def Login(request):
 
 def register(request):
     if request.method == "GET":
-        events = Calendar.objects.all()
+        events = Calendar.objects.order_by('day')
         return render(
             request, "PutPutApp/register.html",
             {"form": CustomUserCreationForm,
@@ -36,7 +35,8 @@ def menu(request):
     if not request.user.profile.player:
         return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
-        drink_menu = Drink.objects.all()
+        # TODO: future feature - order by popularity
+        drink_menu = Drink.objects.order_by('name')
         return render(
                 request, "drinks/menu.html",
                 {"drink_menu": drink_menu,
@@ -44,7 +44,10 @@ def menu(request):
                     }
                 )
     elif request.method == "POST":
-        form = OrderForm(request.POST)
+        initial_dict = {
+            "name":User.first_name,
+        }
+        form = OrderForm(request.POST or None, initial=initial_dict)
         if form.is_valid():
             new_order = Orders()
             new_order.name = request.POST['name']
@@ -114,7 +117,7 @@ def sponsor(request):
 
         return HttpResponseRedirect(request.path_info)
     elif request.method == "GET":
-        events = Calendar.objects.all()
+        events = Calendar.objects.order_by('day')
         return render(request, 'tournament/sponsor.html', 
                 {"form": SponsorForm,
                 "events": events}
@@ -126,7 +129,7 @@ def manage_menu(request):
     if not request.user.profile.manager:
         return HttpResponseRedirect('/dashboard')
     if request.method == "GET":
-        drink_menu = Drink.objects.all()
+        drink_menu = Drink.objects.order_by('name')
         return render(request, 'drinks/manage_menu.html',
                 {
                     "add_drink_form": AddDrinkForm,
@@ -175,7 +178,6 @@ def scorecard(request):
             score.save()
     return HttpResponseRedirect(request.path_info)
             
-
 @login_required
 def leaderboard(request):
     if not request.user.is_authenticated:

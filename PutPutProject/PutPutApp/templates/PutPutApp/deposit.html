@@ -3,25 +3,28 @@
 {% block title %}Wallet | {% endblock %}
 
 {% block content %}
-
+{% load static %}
 <div class="container mt-5 pb-5">
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
                 <div class=" text-center">
-                <h1 class="medieval display-1 fw-bold">Scorecard</h1>
-		<h3 class="mb-5">Current Funds: ${{ user.profile.account_balance }}</h2>
-		    <form method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<input type="submit">
-		    </form>
-
-                    </div>
+                    <h1 class="medieval display-1 fw-bold">Money Changer</h1>
+                    <h2 class="mb-5">Current Funds: ${{ user.profile.account_balance }}</h2>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit">
+                        </form>
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 d-flex align-items-end justify-content-center">
+            <img class="w-50 my-3 mr-lg-3" src="{% static 'PutPutApp/images/moneychanger.svg' %}"
+                 alt="medieval moneychanger">
+        </div>
     </div>
+</div>
 </div>
 
 

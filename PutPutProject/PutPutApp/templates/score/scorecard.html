@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Scorecard | {% endblock %}
 
 {% block content %}
-{% load static %}
 <div class="container pb-5">
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
                 <div class=" text-center">
                     <h1 class="display-1 fw-bold">Scorecard</h1>
-                    <h2 class="mb-5 display-5 fw-bold">Total: {{ total_score }} (<span class="text-muted" style="cursor:pointer;" title="Score To Par">{{ total_par }}</span>)</h2>
+                    <h2 class="mb-5 display-5 fw-bold">Total: {{ total_score }} (<span class="text-muted"
+                                                                                       style="cursor:pointer;"
+                                                                                       title="Score To Par">{{ total_par }}</span>)
+                    </h2>
                     <div class="row">
                         {% for score in scores %}
                         <div class="col m-lg-3 my-3">
@@ -34,14 +38,12 @@
                 <h2 class="fw-bold display-5 text-center">Update Score</h2>
                 <form method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit">
+                    {{ form|crispy }}
+                    <button class="btn btn-lg btn-primary shadow" type="submit">Submit</button>
                 </form>
             </div>
             <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/royalty.svg' %}" alt="medieval royalty">
         </div>
     </div>
 </div>
-
-
 {% endblock %}
