@@ -29,14 +29,11 @@
                             <td>{{ user.user__first_name }}</td>
                             <td>{{ user.user__last_name}}</td>
                             <td>
-                                <input type="checkbox" id="manager" name="{{ user.id }}" value="manager" {% if
-                                       user.manager %} checked {% endif %}><label for="manager">Manager</label>
-                                <input type="checkbox" id="sponsor" name="{{ user.id }}" value="sponsor" {% if
-                                       user.sponsor %} checked {% endif %}><label for="sponsor">Sponsor</label>
-                                <input type="checkbox" id="barkeep" name="{{ user.id }}" value="barkeep" {% if
-                                       user.barkeep %} checked {% endif %}><label for="barkeep">Barkeep</label>
-                                <input type="checkbox" id="player" name="{{ user.id }}" value="player" {% if user.player
-                                       %} checked {% endif %}><label for="player">Player</label></td>
+                                <input type="checkbox" id="manager" name="{{ user.id }}" value="manager" {% if user.manager %} checked {% endif %}><label for="manager">Manager</label>
+                                <input type="checkbox" id="sponsor" name="{{ user.id }}" value="sponsor" {% if user.sponsor %} checked {% endif %}><label for="sponsor">Sponsor</label>
+                                <input type="checkbox" id="barkeep" name="{{ user.id }}" value="barkeep" {% if user.barkeep %} checked {% endif %}><label for="barkeep">Barkeep</label>
+                                <input type="checkbox" id="player" name="{{ user.id }}" value="player" {% if user.player %} checked {% endif %}><label for="player">Player</label>
+			    </td>
                         </tr>
                         {% endfor %}
                         </tbody>
