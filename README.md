@@ -20,7 +20,7 @@ After the project is built following the build instructions below, you can run t
 ### Link for hosted website
 Test login information above will not work on this site, only if you build the site following the build instructions.
 
-medievalmini.golf:8000
+http://medievalmini.golf:8000
 
 
 ## General Info
