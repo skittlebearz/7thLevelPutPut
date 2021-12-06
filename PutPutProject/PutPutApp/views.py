@@ -54,7 +54,7 @@ def menu(request):
             "name":User.first_name,
         }
         form = OrderForm(request.POST or None, initial=initial_dict)
-        drink_menu = Drink.objects.all()
+        drink_menu = Drink.objects.order_by('name')
 
         if form.is_valid():
             prof = Profile.objects.get(user=request.user)

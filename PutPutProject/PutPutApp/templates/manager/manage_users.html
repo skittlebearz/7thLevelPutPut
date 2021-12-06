@@ -1,48 +1,54 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Manage Users | {% endblock %}
 
 {% block content %}
-<div class="container mt-5 pb-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="mask">
-        <div class=" text-center">
-          <!-- <h1 class="mb-3 display-1 fw-bold text-uppercase medieval">Leaderboard</h1> -->
-          <h1 class="mb-3 display-1 fw-bold text-uppercase medieval">Manage User Permissions</h1>
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="mask">
+                <div class=" text-center">
+                    <h1 class="mb-3 display-1 fw-bold text-uppercase">Manage User Permissions</h1>
+                </div>
+                <form action="/manageusers/" method="post">
+                    {% csrf_token %}
+                    <table class="table fw-bold table-hover table-sm" style="border-color:black; border:5px;">
+                        <thead>
+                        <tr>
+                            <th scope="col">Profile ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Permissions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>{{ user.user__first_name }}</td>
+                            <td>{{ user.user__last_name}}</td>
+                            <td>
+                                <input type="checkbox" id="manager" name="{{ user.id }}" value="manager" {% if
+                                       user.manager %} checked {% endif %}><label for="manager">Manager</label>
+                                <input type="checkbox" id="sponsor" name="{{ user.id }}" value="sponsor" {% if
+                                       user.sponsor %} checked {% endif %}><label for="sponsor">Sponsor</label>
+                                <input type="checkbox" id="barkeep" name="{{ user.id }}" value="barkeep" {% if
+                                       user.barkeep %} checked {% endif %}><label for="barkeep">Barkeep</label>
+                                <input type="checkbox" id="player" name="{{ user.id }}" value="player" {% if user.player
+                                       %} checked {% endif %}><label for="player">Player</label></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <button class="btn btn-primary btn-lg shadow mt-3" type="submit">Save</button>
+                </form>
+            </div>
         </div>
-	<form action="/manageusers/" method="post">
-	{% csrf_token %}
-        <table class="table fw-bold table-hover table-sm" style="border-color:black; border:5px;">
-          <thead>
-            <tr>
-              <th scope="col">Profile ID</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Permissions</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          {% for user in users %}
-            <tr>
-              <th scope="row">{{ user.id }}</th>
-	      <td>{{ user.user__first_name }}</td>
-	      <td>{{ user.user__last_name}}</td>
-	      <td>
-		      <input type="checkbox" id="manager" name="{{ user.id }}" value="manager" {% if user.manager %} checked {% endif %}><label for="manager">Manager</label>
-		      <input type="checkbox" id="sponsor" name="{{ user.id }}" value="sponsor" {% if user.sponsor %} checked {% endif %}><label for="sponsor">Sponsor</label>
-		      <input type="checkbox" id="barkeep" name="{{ user.id }}" value="barkeep" {% if user.barkeep %} checked {% endif %}><label for="barkeep">Barkeep</label>
-		      <input type="checkbox" id="player" name="{{ user.id }}" value="player" {% if user.player %} checked {% endif %}><label for="player">Player</label></td>
-            </tr>
-            {% endfor %} 
-
-         </tbody>
-        </table>
-	<input type="submit" value="Save">
-	</form>
-      </div>
+        <div class="col-lg-4 d-flex align-items-end justify-content-center">
+            <img class="w-50 my-3 mr-lg-3" src="{% static 'PutPutApp/images/executioner.svg' %}"
+                 alt="medieval executioner">
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}

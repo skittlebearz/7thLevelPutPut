@@ -5,14 +5,13 @@
 {% block title %}Login | {% endblock %}
 
 {% block content %}
-
-<div class="container mt-5 pb-5">
+<div class="container pb-5">
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
                 <h1 class="mb-3 display-1 fw-bold text-uppercase text-center">Login</h1>
                 <form method="post">
-                    <!-- This is a basic placeholder login form -->
+                    <!-- basic placeholder login form -->
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button class="btn btn-primary shadow btn-lg" type="submit">Login</button>
@@ -27,5 +26,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
