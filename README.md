@@ -171,7 +171,4 @@ After the project is built, you can run the following script that will run a han
     python manage.py test
 
    
-## System testing
-
-TBD
 
