@@ -33,9 +33,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 ">
+        <div class="col-lg-4">
             <div class="mask">
-                <h2 class="fw-bold display-5 text-center">Update Score</h2>
+                <h2 class="fw-bold display-5 text-center" id="update-score">Update Score</h2>
                 <form method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
