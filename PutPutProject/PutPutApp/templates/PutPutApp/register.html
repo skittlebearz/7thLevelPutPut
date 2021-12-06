@@ -6,23 +6,6 @@
 
 {% block content %}
 <div class="container pb-5">
-
-{% if error %}
-	<div class="row">
-                <div class="col-lg-8">
-                        <div class="mask">
-                                            <div class="alert alert-danger">
-                                                <strong>{{ error|escape }}</strong>
-                                                <br>
-						<p>Sorry! Something went wrong</p>
-						<p>We think we know the problem</p>
-						<p>Try again using a less common password</p>
-                                            </div>
-			</div>
-		</div>
-	</div>
-                                        {% endif %}
-
     <div class="row">
         <div class="col-lg-8 order-2 order-lg-1 mb-3">
             <div class="mask">
@@ -62,11 +45,22 @@
                     </div>
                     <button class="btn btn-primary shadow btn-lg" type="submit">Register</button>
                 </form>
+                {% if error %}
+                <div class="card w-100 border-0 my-3">
+                    <div class="card-header">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    <div class="card-body bg-warning">
+                        <p>Sorry! Something went wrong</p>
+                        <p>We think we know the problem</p>
+                        <p>Try again using a less common password</p>
+                    </div>
+                </div>
+                {% endif %}
                 <a class="btn btn-lg btn-outline-primary mt-3 text-center" href="{% url 'login' %}" role="button">Returning
                     User</a>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

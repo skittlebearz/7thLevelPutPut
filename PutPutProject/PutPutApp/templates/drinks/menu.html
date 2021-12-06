@@ -4,34 +4,7 @@
 
 {% block title %}Menu | Tavern | {% endblock %}
 {% block content %}
-
 <div class="container pb-5">
-                                {% if order_placed %}
-        <div class="row">
-                <div class="col-lg-8">
-                        <div class="mask">
-                                        <div>
-                                                <h3> Thank you for your order!</h3>
-                                            </div>
-                        </div>
-                </div>
-        </div>
-                                        {% endif %}
-
-                                        {% if error %}
-        <div class="row">
-                <div class="col-lg-8">
-                        <div class="mask">
-                                            <div class="alert alert-danger">
-                                                <strong>{{ error|escape }}</strong>
-                                                <br>
-                                                <a href="/deposit/">Manage Wallet</a>
-                                            </div>
-			</div>
-		</div>
-	</div>
-                                        {% endif %}
-
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
@@ -44,7 +17,7 @@
 								${{ drink.cost }}
 								<span class="visually-hidden">cost</span>
 							</span>
-                           <div class="card-body">
+                            <div class="card-body">
                                 <h3 class="h5 card-title">{{ drink.name }}</h3>
                                 <p class="card-text">{{ drink.description}}</p>
                             </div>
@@ -56,57 +29,33 @@
         </div>
         <div class="col-lg-4 order-1 order-lg-2">
             <div class="mask">
-                {#% if user.is_authenticated %#}
-                {#% if user.is_player %#}
-
-                                {% if order_placed %}
-        <div class="row">
-                <div class="col-lg-8">
-                        <div class="mask">
-                                        <div>
-                                                <h3> Thank you for your order!</h3>
-                                            </div>
-                        </div>
-                </div>
-        </div>
-                                        {% endif %}
-
-                                        {% if error %}
-        <div class="row">
-                <div class="col-lg-8">
-                        <div class="mask">
-                                            <div class="alert alert-danger">
-                                                <strong>{{ error|escape }}</strong>
-                                                <br>
-                                                <a href="/deposit/">Manage Wallet</a>
-                                            </div>
-			</div>
-		</div>
-	</div>
-                                        {% endif %}
-
-                <!-- TODO: integrate order form -->
-                <h2 class="fw-bold display-5 text-center">Order A Drink</h2>
+                <h2 class="fw-bold display-5 text-center" id="order">Order A Drink</h2>
                 <form action="/menu/" method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-primary btn-lg shadow" type="submit">Place Order</button>
+                    <button class="btn btn-primary btn-lg shadow" type="submit" onClick="Toasty( )">Place Order</button>
                 </form>
-
-                <!-- <button class="btn px-5 btn-primary border-2 btn-lg mx-auto shadow w-100" href="#" target="_blank" role="button">Order</button> -->
-                {#{ else if user.is_barkeep }#}
-                <!-- TODO: display queue, make interactive and dynamic -->
-
-                {#{ else if user.is_manager }#}
-                <!-- TODO: display menu edit controls -->
-
-                {#{ else }#}
-                <!-- TODO: prompt user to login -->
-
-                {#% endif %#}
-                {#% endif %#}
-
-                <!-- <div class="arrow-down mx-auto d-none d-lg-block"></div> -->
+                {% if order_placed %}
+            <div class="card w-100 border-0 my-3">
+                <div class="card-header">
+                    Order Success
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Thank you for your order!</p>
+                </div>
+            </div>
+            {% endif %}
+            {% if error %}
+            <div class="card w-100 border-0 my-3">
+                <div class="card-header">
+                    Order Error
+                </div>
+                <div class="card-body bg-warning">
+                    <p class="card-text">Your account has <strong>{{ error|escape }}</strong>.</p>
+                    <a href="{% url 'deposit_funds' %}"  class="btn btn-success">Manage Wallet</a>
+                </div>
+            </div>
+            {% endif %}
             </div>
             <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/tavern.svg' %}" alt="medieval tavern">
         </div>
