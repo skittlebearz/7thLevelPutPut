@@ -5,18 +5,12 @@
 
 {% block content %}
 <div class="container pb-5">
-	<div class="row">
-		<div class="col-lg-8 mb-3">
-			<div class="mask">
-				<!-- <h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Ye Olde <br />19<sup>th</sup> Hole</h1> -->
-
-				<h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Current Drinks</h1>
-				<!-- <hr /> -->
-				<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
-
-					<!-- TODO: make menu dynamic -->
-					{% for drink in drink_menu %}
-
+    <div class="row">
+        <div class="col-lg-8 mb-3">
+            <div class="mask">
+                <h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Current Drinks</h1>
+                <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+                   {% for drink in drink_menu %}
 					<div class="col">
 						<div class="card h-100">
 							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
@@ -24,45 +18,43 @@
 								<span class="visually-hidden">cost</span>
 							</span>
 							<div class="card-body">
-								<h2 class="h5 card-title">{{ drink.name }}</h2>
+								<h3 class="h5 card-title">{{ drink.name }}</h3>
 								<p class="card-text">{{ drink.description}}</p>
 							</div>
-
 						</div>
 					</div>
-
 					{% endfor %}
-				</div>
-			</div>
-		</div>
-		<div class="col-12 col-lg-4">
-			<div class="mask">
-				<h2 id="queue">Orders</h2>
-				{% for order in orders %}
-				<div class="card w-100 text-left onHoverFloat my-3">
-					<div class="card-body">
-						<div class="d-flex flex-row justify-content-between">
-							<div class="p-2">
-								<h3 class="h5 card-title">{{ order.name }}</h3>
-							</div>
-							<div class="p-2">
-								<p>{{ order.drink }}</p>
-							</div>
-							<div class="p-2"><span class="badge bg-danger">{{ order.location}}</span></div>
-							<div class="p-2">
-								<form action="{% url 'fulfill_order' order_id=order.pk %}" method="POST">
-									{% csrf_token %}
-									<input type="submit" value="Fulfill" />
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-			<img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/tavern.svg' %}" alt="medieval tavern">
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="mask">
+                <h2 id="queue">Orders</h2>
+                {% for order in orders %}
+                <div class="card w-100 text-left onHoverFloat my-3">
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="p-2">
+                                <h3 class="h5 card-title">{{ order.name }}</h3>
+                            </div>
+                            <div class="p-2">
+                                <p>{{ order.drink }}</p>
+                            </div>
+                            <div class="p-2"><span class="badge bg-danger">{{ order.location}}</span></div>
+                            <div class="p-2">
+                                <form action="{% url 'fulfill_order' order_id=order.pk %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Fulfill"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+<!--            <img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/tavern.svg' %}" alt="medieval tavern">-->
+        </div>
+    </div>
 </div>
 
 {% endblock %}
