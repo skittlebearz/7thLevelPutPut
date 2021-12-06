@@ -1,22 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Manage Menu | {% endblock %}
 
 {% block content %}
-
-<div class="container mt-5 pb-5">
+<div class="container pb-5">
 	<div class="row">
 		<div class="col-lg-8 mb-3">
 			<div class="mask">
-				<!-- <h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Ye Olde <br />19<sup>th</sup> Hole</h1> -->
-
 				<h1 class="py-3 fw-bold text-center medieval display-1 text-uppercase">Current Drinks</h1>
-				<!-- <hr /> -->
 				<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
-
-					<!-- TODO: make menu dynamic -->
 					{% for drink in drink_menu %}
-
 					<div class="col">
 						<div class="card h-100">
 							<span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-success">
@@ -27,31 +21,29 @@
 								<h2 class="h5 card-title">{{ drink.name }}</h2>
 								<p class="card-text">{{ drink.description}}</p>
 							</div>
-
 						</div>
 					</div>
-
 					{% endfor %}
 				</div>
 			</div>
 		</div>
 		<div class="col-12 col-lg-4 px-3">
-			<div class="mask p-5" style="background-color: rgba(255, 255, 255, 0.5);">
-				<h1>Manage Menu</h1>
-				<h2>Add a new drink</h2>
+			<div class="mask">
+				<h2 id="manage">Manage Menu</h2>
+				<h3>Add a new drink</h3>
 				<form action="/managemenu/" method="post">
 					{% csrf_token %}
 					{{ add_drink_form }}
 					<input value="Add Drink" name="add_drink" input type="submit">
 				</form>
-
-				<h2>Delete a drink</h2>
+				<h3>Delete a drink</h3>
 				<form action="/managemenu/" method="post">
 					{% csrf_token %}
 					{{ remove_drink_form }}
 					<input value="Remove Drink" name="remove_drink" input type="submit">
 				</form>
 			</div>
+			<img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/tavern.svg' %}" alt="medieval tavern">
 		</div>
 	</div>
 </div>

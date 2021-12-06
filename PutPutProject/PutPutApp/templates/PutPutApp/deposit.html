@@ -1,21 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Wallet | {% endblock %}
 
 {% block content %}
-{% load static %}
 <div class="container mt-5 pb-5">
     <div class="row">
         <div class="col-lg-8">
             <div class="mask">
-                <div class=" text-center">
-                    <h1 class="medieval display-1 fw-bold">Money Changer</h1>
-                    <h2 class="mb-5">Current Funds: ${{ user.profile.account_balance }}</h2>
+                <div class="">
+                    <h1 class="display-1 fw-bold text-center">Money Changer</h1>
+                    <h2 class="mb-5 text-center">Current Funds: ${{ user.profile.account_balance }}</h2>
+                    <div class="px-lg-5 mx-lg-5">
                         <form method="POST">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit">
+                            {{ form|crispy }}
+                            <button class="btn btn-primary btn-lg shadow" type="submit">Deposit</button>
                         </form>
+                        <a class="btn btn-outline-primary border-2 btn-lg mt-3" href="{% url 'menu' %}"
+                           role="button">Tavern</a>
+                    </div>
                 </div>
             </div>
         </div>

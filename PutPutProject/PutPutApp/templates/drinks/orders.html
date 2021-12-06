@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Orders | Tavern | {% endblock %}
 
 {% block content %}
-<div class="container mt-5 pb-5">
+<div class="container pb-5">
 	<div class="row">
 		<div class="col-lg-8 mb-3">
 			<div class="mask">
@@ -36,7 +37,7 @@
 		</div>
 		<div class="col-12 col-lg-4">
 			<div class="mask">
-				<h1>Orders</h1>
+				<h2 id="queue">Orders</h2>
 				{% for order in orders %}
 				<div class="card w-100 text-left onHoverFloat my-3">
 					<div class="card-body">
@@ -59,6 +60,7 @@
 				</div>
 				{% endfor %}
 			</div>
+			<img class="w-100 my-3 mr-lg-3" src="{% static 'PutPutApp/images/tavern.svg' %}" alt="medieval tavern">
 		</div>
 	</div>
 </div>
