@@ -105,13 +105,13 @@ Now go to the starting point(dashboard) of the website http://127.0.0.1:8000
 
 ----------------------------------------------------------------
 
-<--- ### (Ubuntu) Build Script Instructions --->
-<--- Clone GitHub repo and execute buildscript: --->
-<---     git clone https://github.com/skittlebearz/7thLevelPutPut.git  --->
-<---     cd 7thLevelPutPut --->
-<---     bash setup.sh <MySQL root password> --->
-<---     . putputvenv/bin/activate --->
-<---     python3 PutPutProject/manage.py runserver --->
+<---- ### (Ubuntu) Build Script Instructions ---->
+<---- Clone GitHub repo and execute buildscript: ---->
+<----     git clone https://github.com/skittlebearz/7thLevelPutPut.git  ---->
+<----     cd 7thLevelPutPut ---->
+<----     bash setup.sh <MySQL root password> ---->
+<----     . putputvenv/bin/activate ---->
+<----     python3 PutPutProject/manage.py runserver ---->
 ----------------------------------------------------------------
 
 ### Manual Linux(Ubuntu) Instructions
