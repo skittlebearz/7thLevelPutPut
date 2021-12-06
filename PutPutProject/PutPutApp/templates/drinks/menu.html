@@ -51,7 +51,7 @@
                     Order Error
                 </div>
                 <div class="card-body bg-warning">
-                    <p class="card-text">Your account has <strong>{{ error|escape }}</strong>.</p>
+                    <p class="card-text"> <strong>{{ error|escape }}</strong>.</p>
                     <a href="{% url 'deposit_funds' %}"  class="btn btn-success">Manage Wallet</a>
                 </div>
             </div>

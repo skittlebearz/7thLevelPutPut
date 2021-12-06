@@ -78,7 +78,15 @@ def menu(request):
                         request, "drinks/menu.html",
                         {"drink_menu": drink_menu,
                             "form": OrderForm,
-                            "error" : "insufficient funds"})
+                            "error" : "You have insufficient funds"})
+        
+        else:
+            return render(
+                    request, "drinks/menu.html",
+                    {"drink_menu": drink_menu,
+                    "form": OrderForm,
+                    "error" : "enter a hole 1-18"})
+
 
  
 @login_required
