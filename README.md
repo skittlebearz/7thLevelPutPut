@@ -17,15 +17,10 @@ After the project is built following the build instructions below, you can run t
     python manage.py test PutPutApp
 
 
+###Link for hosted website
+Test login information above will not work on this site, only if you build the site following the build instructions.
+medievalmini.golf:8000
 
-## IMPORTANT MILESTONE 3 INFO!	
-Link to the folder containing:
-- Sprint Plannings
-- Sprint Retrospectives
-- Standup Reports
-- UI Manual testin write-ups
-
-https://drive.google.com/drive/folders/1fASbTWxiv4f2l7xVIIaKykqDxwlskrE8?usp=sharing
 
 ## General Info
 ***
