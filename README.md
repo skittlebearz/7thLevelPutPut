@@ -14,7 +14,7 @@ CS3450 minigolf web app project
 
 After the project is built following the build instructions below, you can run the following script that will run a handful of integrated unit tests:
     
-    python manage.py test PutPutProject
+    python manage.py test PutPutApp
 
 
 
@@ -138,7 +138,7 @@ Now go to the starting point(dashboard) of the website http://127.0.0.1:8000
 
 After the project is built, you can run the following script that will run a handful of integrated unit tests:
     
-    python manage.py test PutPutProject
+    python manage.py test PutPutApp
 
    
 
