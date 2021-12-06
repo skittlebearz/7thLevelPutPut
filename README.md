@@ -123,6 +123,10 @@ Install python modules:
 
     pip3 install -r requirements.txt
 
+Run the project migrate to initialize website
+
+    python PutPutProject/manage.py migrate
+ 
 Run server:
 
     cd PutPutProject
