@@ -114,31 +114,6 @@ Ensure dependencies are installed
 
     sudo apt install python3 python3-pip python3-dev python3.8-venv default-libmysqlclient-dev build-essential
 
-Install MySQL
-
-    wget -c https://repo.mysql.com//mysql-apt-config_0.8.19-1_all.deb
-    dpkg -i mysql-apt-config_0.8.19-1_all.deb
-    apt install mysql-server
-
-
-Login to MySQL server as root
-Create putput database
-
-    CREATE DATABASE putput CHARACTER SET utf8;
-
-Create django user
-
-    CREATE USER 'django'@'localhost' IDENTIFIED BY <password>;
-    GRANT ALL PRIVILEGES ON putput.* to django@localhost;
-
-Create mysql.cnf file in root folder with following settings:
-
-    [client]
-    database = putput
-    user = django 
-    password = <password>
-    default-character-set = utf8
-
 Setup up virtualenv
 
     virtualenv -p python3 <name>
@@ -152,6 +127,8 @@ Run server:
 
     cd PutPutProject
     python3 manage.py runserver
+
+Now go to the starting point(dashboard) of the website http://127.0.0.1:8000
 
 ## Unit testing
 
