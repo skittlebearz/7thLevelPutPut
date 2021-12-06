@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Manage Menu | {% endblock %}
 
@@ -33,13 +34,13 @@
 				<h3>Add a new drink</h3>
 				<form action="/managemenu/" method="post">
 					{% csrf_token %}
-					{{ add_drink_form }}
+					{{ add_drink_form|crispy }}
 					<input value="Add Drink" name="add_drink" input type="submit">
 				</form>
 				<h3>Delete a drink</h3>
 				<form action="/managemenu/" method="post">
 					{% csrf_token %}
-					{{ remove_drink_form }}
+					{{ remove_drink_form|crispy }}
 					<input value="Remove Drink" name="remove_drink" input type="submit">
 				</form>
 			</div>
