@@ -4,62 +4,52 @@
 
 {% block content %}
 <div class="container mt-5 pb-5">
-  <div class="row">
-    <div class="col-lg-8 order-2 order-lg-1 mb-3">
-      <div class="mask">
-        <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">Sponsor <br />Requests</h1>
-
-        {% for event in requests %}
-
-              <div class="card w-100 text-left onHoverFloat my-3">
-                <div class="card-body">
-                  <div class="d-flex flex-row justify-content-between">
-                    <div class="p-2">
-                      <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+    <div class="row">
+        <div class="col-lg-8 order-2 order-lg-1 mb-3">
+            <div class="mask">
+                <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">List of Scheduled <br/>Events
+                </h1>
+                {% for event in events %}
+                <div class="card w-100 text-left onHoverFloat my-3">
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="p-2">
+                                <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+                            </div>
+                            <div class="p-2"><a href="#" class="stretched-link" title="Register"></a></div>
+                            <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
+                        </div>
                     </div>
-                    <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
-		  </div>
-
-		  <form action="{% url 'approve_tournament' sponsor_request_id=event.pk %}" method="POST">
-			  {% csrf_token %}
-			  <input type="submit" value="Approve" name="Approve"/>
-			  <input type="submit" value="Decline" name="Decline"/>
-		  </form>
-
                 </div>
-              </div>
-
-            
-	{% endfor %} 
-
-	<br>
-	<br>
-	<br>
-	<br>
-        <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">List of Scheduled <br />Events</h1>
-
-        {% for event in events %}
-
-              <div class="card w-100 text-left onHoverFloat my-3">
-                <div class="card-body">
-                  <div class="d-flex flex-row justify-content-between">
-                    <div class="p-2">
-                      <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2">
+            <div class="mask">
+                <h2 class="mb-3 display-2 text-center fw-bold text-uppercase">Sponsor <br/>Requests</h2>
+                {% for event in requests %}
+                <div class="card w-100 text-left onHoverFloat my-3">
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="p-2">
+                                <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+                            </div>
+                            <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
+                        </div>
+                        <form action="{% url 'approve_tournament' sponsor_request_id=event.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button class="btn btn-success btn-lg shadow m-3" type="submit" name="Approve">Approve
+                            </button>
+                            <button class="btn btn-success btn-lg shadow m-3" type="submit" name="Decline">Decline
+                            </button>
+                            <!--                            <input type="submit" value="Approve" name="Approve"/>-->
+                            <!--                            <input type="submit" value="Decline" name="Decline"/>-->
+                        </form>
                     </div>
-                    <div class="p-2"><a href="#" class="stretched-link" title="Register"></a></div>
-                    <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
-                  </div>
                 </div>
-              </div>
-
-
-        {% endfor %}
-
-	
-
-      </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
- </div>
 </div>
-
 {% endblock %}

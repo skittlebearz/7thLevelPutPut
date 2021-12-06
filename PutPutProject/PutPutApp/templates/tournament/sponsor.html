@@ -1,47 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
-{% block title %}Sponser{% endblock %}
+{% block title %}Sponsor | {% endblock %}
 
 {% block content %}
-<div class="container mt-5 pb-5">
-  <div class="row">
-    <div class="col-lg-8 order-2 order-lg-1 mb-3">
-      <div class="mask">
-        <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">Schedule of <br />Events</h1>
-
-    <div class="col-lg-4 order-1 order-lg-2">
-      <div class="mask">
-        <h1>Sponsor a Tournament</h1>
-        <!-- Registration form -->
-        <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" value="Sponsor">
-        </form>
-      </div>
-    </div>
-
-        {% for event in events %}
-
-              <div class="card w-100 text-left onHoverFloat my-3">
-                <div class="card-body">
-                  <div class="d-flex flex-row justify-content-between">
-                    <div class="p-2">
-                      <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-lg-8 order-2 order-lg-1 mb-3">
+            <div class="mask">
+                <h1 class="mb-3 display-2 medieval text-center fw-bold text-uppercase">Schedule of <br/>Events</h1>
+                {% for event in events %}
+                <div class="card w-100 text-left onHoverFloat my-3">
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="p-2">
+                                <h3 class="h5 card-title">{{ event.tournament_name }}</h3>
+                            </div>
+                            <div class="p-2"><a href="#" class="stretched-link" title="Register"></a></div>
+                            <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
+                        </div>
                     </div>
-                    <div class="p-2"><a href="#" class="stretched-link" title="Register"></a></div>
-                    <div class="p-2"><span class="badge bg-danger">{{ event.day }}</span></div>
-                  </div>
                 </div>
-              </div>
-
-            
-	{% endfor %} 
-	
-
-      </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2">
+            <div class="mask">
+                <h2>Sponsor a Tournament</h2>
+                <!-- Registration form -->
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-primary btn-lg shadow mt-3" type="submit">Sponsor Event</button>
+                </form>
+            </div>
+        </div>
     </div>
- </div>
 </div>
-
 {% endblock %}

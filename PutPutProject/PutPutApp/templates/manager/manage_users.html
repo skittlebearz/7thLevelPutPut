@@ -9,7 +9,7 @@
         <div class="col-lg-8">
             <div class="mask">
                 <div class=" text-center">
-                    <h1 class="mb-3 display-1 fw-bold text-uppercase medieval">Manage User Permissions</h1>
+                    <h1 class="mb-3 display-1 fw-bold text-uppercase">Manage User Permissions</h1>
                 </div>
                 <form action="/manageusers/" method="post">
                     {% csrf_token %}
@@ -41,9 +41,13 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                    <input type="submit" value="Save">
+                <button class="btn btn-primary btn-lg shadow mt-3" type="submit">Save</button>
                 </form>
             </div>
+        </div>
+        <div class="col-lg-4 d-flex align-items-end justify-content-center">
+            <img class="w-50 my-3 mr-lg-3" src="{% static 'PutPutApp/images/executioner.svg' %}"
+                 alt="medieval executioner">
         </div>
     </div>
 </div>
