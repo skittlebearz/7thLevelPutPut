@@ -17,8 +17,8 @@ After the project is built following the build instructions below, you can run t
     python manage.py test PutPutApp
 
 
-### Link for hosted website
-Test login information above will not work on this site, only if you build the site following the build instructions.
+## Link for hosted website
+###The test login information listed above should also work on this site.
 
 http://medievalmini.golf:8000
 
